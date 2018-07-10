@@ -19,8 +19,79 @@ public class User implements Serializable {
 	
 	String nom;
 	
+	String password ;
+	String email;
+	String adress;
+    String numTel;
+    
 	public User() {
 		super();
 	}
+	
+	
+	
+
+	public User(String nom, String password, String email, String adress, String numTel) {
+		super();
+		this.nom = nom;
+		this.password = password;
+		this.email = email;
+		this.adress = adress;
+		this.numTel = numTel;
+	}
+
+
+
+
+	public int getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	public String getNumTel() {
+		return numTel;
+	}
+
+	public void setNumTel(String numTel) {
+		this.numTel = numTel;
+	}
+	
+	
+	
    
 }
