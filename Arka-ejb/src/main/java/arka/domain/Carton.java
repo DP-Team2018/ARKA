@@ -23,7 +23,8 @@ public class Carton implements Serializable {
     Date arrivalDate;
     
     long duration;
-    
+    @OneToOne
+    private Location locale;
 	public Carton() {
 		super();
 	}
@@ -68,6 +69,16 @@ public class Carton implements Serializable {
 
 	public void setDuration(long duration) {
 		this.duration = duration;
+	}
+
+
+	public Location getLocale() {
+		return locale;
+	}
+
+
+	public void setLocale(Location locale) {
+		this.locale = locale;
 	}
 	
 	

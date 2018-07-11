@@ -22,8 +22,10 @@ public class Location implements Serializable {
 	int column;
 	
 	boolean empty;
-	
-	
+	@OneToOne(mappedBy="locale")
+    private Carton carton;
+	@ManyToOne
+	private Cabinet cabinet;
 	
 	public Location(int idLocation, int line, int column, boolean empty) {
 		super();
@@ -76,6 +78,26 @@ public class Location implements Serializable {
 
 	public void setEmpty(boolean empty) {
 		this.empty = empty;
+	}
+
+
+	public Carton getCarton() {
+		return carton;
+	}
+
+
+	public void setCarton(Carton carton) {
+		this.carton = carton;
+	}
+
+
+	public Cabinet getCabinet() {
+		return cabinet;
+	}
+
+
+	public void setCabinet(Cabinet cabinet) {
+		this.cabinet = cabinet;
 	}
 	
    

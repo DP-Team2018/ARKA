@@ -1,6 +1,8 @@
 package arka.domain;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -19,7 +21,8 @@ public class Site implements Serializable {
      String name;
      String address;
      float area;
-     
+     @OneToMany(mappedBy="site",cascade=CascadeType.MERGE,fetch=FetchType.EAGER)
+ 	private List<Cabinet> listcabinet;
      
 	public Site() {
 		super();
@@ -74,6 +77,16 @@ public class Site implements Serializable {
 
 	public void setArea(float area) {
 		this.area = area;
+	}
+
+
+	public List<Cabinet> getListcabinet() {
+		return listcabinet;
+	}
+
+
+	public void setListcabinet(List<Cabinet> listcabinet) {
+		this.listcabinet = listcabinet;
 	}
 	
 	
