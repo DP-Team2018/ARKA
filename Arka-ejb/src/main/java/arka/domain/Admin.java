@@ -1,6 +1,8 @@
 package arka.domain;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -23,7 +25,8 @@ public class Admin  implements Serializable {
 		String email;
 		String adress;
 	    String numTel;
-	    
+	    @OneToMany (mappedBy="admin")
+		private List<Demand> demands;
 	     
 	public Admin() {
 		super();
@@ -101,6 +104,20 @@ public class Admin  implements Serializable {
 	public void setNumTel(String numTel) {
 		this.numTel = numTel;
 	}
+
+
+
+	public List<Demand> getDemands() {
+		return demands;
+	}
+
+
+
+	public void setDemands(List<Demand> demands) {
+		this.demands = demands;
+	}
+	
+	
 	
 	 
    

@@ -24,8 +24,11 @@ public class Report implements Serializable {
 	 
 	 ReportType reportType;
 	 
-	
+	 @ManyToOne
+      Carton carton;
 	 
+	 @ManyToOne
+	   Agent agent;
 	public Report(int idReport, String note, Date date, ReportType reportType) {
 		super();
 		this.idReport = idReport;
@@ -78,6 +81,27 @@ public class Report implements Serializable {
 	public void setReportType(ReportType reportType) {
 		this.reportType = reportType;
 	}
+
+
+	public Carton getCarton() {
+		return carton;
+	}
+
+
+	public void setCarton(Carton carton) {
+		this.carton = carton;
+	}
+
+
+	public Agent getAgent() {
+		return agent;
+	}
+
+
+	public void setAgent(Agent agent) {
+		this.agent = agent;
+	}
    
+	
 	
 }

@@ -2,6 +2,7 @@ package arka.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -26,6 +27,10 @@ public class Agent  implements Serializable {
    String numTel;
     Date recretingDate;
     float salaire;
+    
+    @OneToMany (mappedBy="agent")
+	private List<Report> reports;
+    
 	public Agent() {
 		super();
 	}
@@ -95,6 +100,20 @@ public class Agent  implements Serializable {
 	public void setSalaire(float salaire) {
 		this.salaire = salaire;
 	}
+
+
+
+	public List<Report> getReports() {
+		return reports;
+	}
+
+
+
+	public void setReports(List<Report> reports) {
+		this.reports = reports;
+	}
+	
+	
    
 	
 }

@@ -2,6 +2,7 @@ package arka.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -23,7 +24,12 @@ public class Carton implements Serializable {
     Date arrivalDate;
     
     long duration;
+   
+    @ManyToOne
+	Client client;
     
+    @OneToMany (mappedBy="carton")
+   	private List<Report> reports ;
 	public Carton() {
 		super();
 	}
@@ -69,6 +75,27 @@ public class Carton implements Serializable {
 	public void setDuration(long duration) {
 		this.duration = duration;
 	}
+
+
+	public Client getClient() {
+		return client;
+	}
+
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+
+	public List<Report> getReports() {
+		return reports;
+	}
+
+
+	public void setReports(List<Report> reports) {
+		this.reports = reports;
+	}
+	
 	
 	
    
