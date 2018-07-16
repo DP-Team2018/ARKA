@@ -17,7 +17,7 @@ public class Admin  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	 
 		@Id
-		 int idUser;
+		 int idAdmin;
 		
 		String nom;
 		
@@ -36,7 +36,7 @@ public class Admin  implements Serializable {
 
 	public Admin(int idUser, String nom, String password, String email, String adress, String numTel) {
 		super();
-		this.idUser = idUser;
+		this.idAdmin = idUser;
 		this.nom = nom;
 		this.password = password;
 		this.email = email;
@@ -45,15 +45,19 @@ public class Admin  implements Serializable {
 	}
 
 
+     
 
-	public int getIdUser() {
-		return idUser;
+
+	public int getIdAdmin() {
+		return idAdmin;
 	}
 
 
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+
+	public void setIdAdmin(int idAdmin) {
+		this.idAdmin = idAdmin;
 	}
+
 
 
 	public String getNom() {

@@ -18,7 +18,7 @@ public class Report implements Serializable {
 	@Id
 	int idReport;
 	
-	 String note;
+	
 	
 	 Date date;
 	 
@@ -29,10 +29,14 @@ public class Report implements Serializable {
 	 
 	 @ManyToOne
 	   Agent agent;
+	 
+	 @OneToOne
+	   Demand demand;
+	 
 	public Report(int idReport, String note, Date date, ReportType reportType) {
 		super();
 		this.idReport = idReport;
-		this.note = note;
+	
 		this.date = date;
 		this.reportType = reportType;
 	}
@@ -53,14 +57,6 @@ public class Report implements Serializable {
 	}
 
 
-	public String getNote() {
-		return note;
-	}
-
-
-	public void setNote(String note) {
-		this.note = note;
-	}
 
 
 	public Date getDate() {
@@ -101,6 +97,18 @@ public class Report implements Serializable {
 	public void setAgent(Agent agent) {
 		this.agent = agent;
 	}
+
+
+	public Demand getDemand() {
+		return demand;
+	}
+
+
+	public void setDemand(Demand demand) {
+		this.demand = demand;
+	}
+	
+	
    
 	
 	

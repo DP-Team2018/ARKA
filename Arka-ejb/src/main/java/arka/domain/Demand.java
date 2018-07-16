@@ -27,6 +27,9 @@ public class Demand implements Serializable {
 	
 	int idCartonClient;
 	
+	Date assignmentDate;
+	
+	DemandState demandState;
 	@ManyToOne
 	Client client;
 	
@@ -105,6 +108,23 @@ public class Demand implements Serializable {
 	public void setAdmin(Admin admin) {
 		this.admin = admin;
 	}
+
+	public Date getAssignmentDate() {
+		return assignmentDate;
+	}
+
+	public void setAssignmentDate(Date assignmentDate) {
+		this.assignmentDate = assignmentDate;
+	}
+
+	public DemandState getDemandState() {
+		return demandState;
+	}
+
+	public void setDemandState(DemandState demandState) {
+		this.demandState = demandState;
+	}
+	
 	
    
 }

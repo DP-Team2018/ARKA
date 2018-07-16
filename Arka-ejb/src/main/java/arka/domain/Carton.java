@@ -28,6 +28,8 @@ public class Carton implements Serializable {
     @ManyToOne
 	Client client;
     
+    Date destructionDate;
+    
     @OneToMany (mappedBy="carton")
    	private List<Report> reports ;
 	public Carton() {
@@ -103,6 +105,18 @@ public class Carton implements Serializable {
 	public void setReports(List<Report> reports) {
 		this.reports = reports;
 	}
+
+
+	public Date getDestructionDate() {
+		return destructionDate;
+	}
+
+
+	public void setDestructionDate(Date destructionDate) {
+		this.destructionDate = destructionDate;
+	}
+	
+	
 	
    
 }

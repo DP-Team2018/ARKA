@@ -21,8 +21,8 @@ public class Site implements Serializable {
      String name;
      String address;
      float area;
-     @OneToMany(mappedBy="site",cascade=CascadeType.MERGE,fetch=FetchType.EAGER)
- 	private List<Cabinet> listcabinet;
+     @OneToMany(mappedBy="site",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+ 	private List<Location> locations;
      
 	public Site() {
 		super();
@@ -80,14 +80,17 @@ public class Site implements Serializable {
 	}
 
 
-	public List<Cabinet> getListcabinet() {
-		return listcabinet;
+	public List<Location> getLocations() {
+		return locations;
 	}
 
 
-	public void setListcabinet(List<Cabinet> listcabinet) {
-		this.listcabinet = listcabinet;
+	public void setLocations(List<Location> locations) {
+		this.locations = locations;
 	}
+
+
+	
 	
 	
    

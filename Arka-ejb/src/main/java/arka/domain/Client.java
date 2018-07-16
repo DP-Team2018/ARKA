@@ -23,6 +23,7 @@ public class Client implements Serializable {
 	String email;
 	String adress;
     String numTel;
+    String nomResp;//getset
 	
     @OneToMany (mappedBy="client")
 	private List<Demand> demands;
@@ -110,6 +111,16 @@ public class Client implements Serializable {
 	public void setCartons(List<Carton> cartons) {
 		this.cartons = cartons;
 	}
+
+	public String getNomResp() {
+		return nomResp;
+	}
+
+	public void setNomResp(String nomResp) {
+		this.nomResp = nomResp;
+	}
+	
+	
    
 	
 	

@@ -17,16 +17,13 @@ public class Agent  implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
-	 int idUser;
+	 String matricule;
 	
 	String nom;
-	
 	String password ;
 	String email;
 	String adress;
-   String numTel;
-    Date recretingDate;
-    float salaire;
+    String numTel;
     
     @OneToMany (mappedBy="agent")
 	private List<Report> reports;
@@ -37,26 +34,25 @@ public class Agent  implements Serializable {
 	
 	
 	
-	public Agent(int idUser, String nom, String password, String email, String adress, String numTel,
+	public Agent(String matricule, String nom, String password, String email, String adress, String numTel,
 			Date recretingDate, float salaire) {
 		super();
-		this.idUser = idUser;
+		this.matricule = matricule;
 		this.nom = nom;
 		this.password = password;
 		this.email = email;
 		this.adress = adress;
 		this.numTel = numTel;
-		this.recretingDate = recretingDate;
-		this.salaire = salaire;
+		
 	}
 
 
 
-	public int getIdUser() {
-		return idUser;
+	public String getidAgent() {
+		return matricule;
 	}
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+	public void setidAgent(String idAgent) {
+		this.matricule = idAgent;
 	}
 	public String getNom() {
 		return nom;
@@ -88,19 +84,7 @@ public class Agent  implements Serializable {
 	public void setNumTel(String numTel) {
 		this.numTel = numTel;
 	}
-	public Date getRecretingDate() {
-		return recretingDate;
-	}
-	public void setRecretingDate(Date recretingDate) {
-		this.recretingDate = recretingDate;
-	}
-	public float getSalaire() {
-		return salaire;
-	}
-	public void setSalaire(float salaire) {
-		this.salaire = salaire;
-	}
-
+	
 
 
 	public List<Report> getReports() {

@@ -19,20 +19,25 @@ public class Location implements Serializable {
 	
 	int line;
 	
-	int column;
+	int row ;
+	
+	int driveway;
 	
 	boolean empty;
-	@OneToOne(mappedBy="locale")
+	@OneToOne
     private Carton carton;
-	@ManyToOne
-	private Cabinet cabinet;
 	
-	public Location(int idLocation, int line, int column, boolean empty) {
+	@ManyToOne
+	private Site site;
+
+
+	public Location(int line, int row, int driveway, boolean empty, Carton carton) {
 		super();
-		this.idLocation = idLocation;
 		this.line = line;
-		this.column = column;
+		this.row = row;
+		this.driveway = driveway;
 		this.empty = empty;
+		this.carton = carton;
 	}
 
 
@@ -61,14 +66,6 @@ public class Location implements Serializable {
 	}
 
 
-	public int getColumn() {
-		return column;
-	}
-
-
-	public void setColumn(int column) {
-		this.column = column;
-	}
 
 
 	public boolean isEmpty() {
@@ -91,14 +88,27 @@ public class Location implements Serializable {
 	}
 
 
-	public Cabinet getCabinet() {
-		return cabinet;
+	public int getRow() {
+		return row;
 	}
 
 
-	public void setCabinet(Cabinet cabinet) {
-		this.cabinet = cabinet;
+	public void setRow(int row) {
+		this.row = row;
 	}
+
+
+	public int getDriveway() {
+		return driveway;
+	}
+
+
+	public void setDriveway(int driveway) {
+		this.driveway = driveway;
+	}
+
+	
+	
 	
    
 }
