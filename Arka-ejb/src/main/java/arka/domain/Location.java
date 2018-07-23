@@ -16,13 +16,13 @@ public class Location implements Serializable {
     
 	@Id
 	 @GeneratedValue(strategy = GenerationType.AUTO)
-
+     
 	int idLocation;
-	
+	//allée
 	int line;
-	
+	//etagére
 	int row ;
-	
+	//
 	int driveway;
 	
 	boolean empty;

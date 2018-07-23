@@ -23,8 +23,6 @@ public class Demand implements Serializable {
 	
 	DemandType demandType;
 	
-	boolean etat;
-	
 	Date date;
 	
 	int idCartonClient;
@@ -71,13 +69,7 @@ public class Demand implements Serializable {
 		this.demandType = demandType;
 	}
 
-	public boolean isEtat() {
-		return etat;
-	}
-
-	public void setEtat(boolean etat) {
-		this.etat = etat;
-	}
+	
 
 	public Date getDate() {
 		return date;

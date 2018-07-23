@@ -20,8 +20,6 @@ public class Report implements Serializable {
 
 	int idReport;
 	
-	
-	
 	 Date date;
 	 
 	 ReportType reportType;
