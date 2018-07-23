@@ -30,7 +30,7 @@ public class Carton implements Serializable {
     
     Date destructionDate;
     
-    @OneToMany (mappedBy="carton")
+    @OneToMany (mappedBy="carton",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
    	private List<Report> reports ;
 	public Carton() {
 		super();

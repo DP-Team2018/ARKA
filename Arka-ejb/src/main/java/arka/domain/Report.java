@@ -42,6 +42,15 @@ public class Report implements Serializable {
 	}
 
 
+	public Report(ReportType reportType, Carton carton, Agent agent, Demand demand) {
+		super();
+		this.reportType = reportType;
+		this.carton = carton;
+		this.agent = agent;
+		this.demand = demand;
+	}
+
+
 	public Report() {
 		super();
 	}

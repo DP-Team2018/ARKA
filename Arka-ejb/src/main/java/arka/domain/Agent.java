@@ -27,7 +27,7 @@ public class Agent  implements Serializable {
 	String adress;
     String numTel;
     
-    @OneToMany (mappedBy="agent")
+    @OneToMany (mappedBy="agent",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<Report> reports;
     
 	public Agent() {
