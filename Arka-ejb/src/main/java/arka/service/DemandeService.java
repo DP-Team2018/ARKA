@@ -40,14 +40,13 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
     }
 
 	@Override
-	public void updateDemand(Demand demande) {
-		// TODO Auto-generated method stub
+	public void updateDemand(Demand demand) {
 		
 	}
 
 	@Override
 	public void deleteDemand(Demand demande) {
-		// TODO Auto-generated method stub
+		entityManager.remove(entityManager.merge(demande));
 		
 	}
 
