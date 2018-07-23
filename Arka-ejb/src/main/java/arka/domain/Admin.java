@@ -16,16 +16,16 @@ public class Admin  implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	 
-		@Id
-		 int idAdmin;
-		
+	      @Id
+	      @GeneratedValue(strategy = GenerationType.AUTO)
+	      int idAdmin;
+	
 		String nom;
-		
 		String password ;
 		String email;
 		String adress;
 	    String numTel;
-	    @OneToMany (mappedBy="admin")
+	    @OneToMany (mappedBy="admin",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 		private List<Demand> demands;
 	     
 	public Admin() {

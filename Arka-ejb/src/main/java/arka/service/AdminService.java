@@ -28,12 +28,27 @@ public class AdminService implements AdminServiceRemote, AdminServiceLocal {
     	
     }
     
-   public List<Admin> getAllAdmin(){
-	   
-	   List<Admin> admins=  em.createQuery("from Admin").getResultList();;
-	      
-    	return admins;
-    	
-    }
+    public List<Admin> getAllAdmin(){
+ 	   List<Admin> admins=  em.createQuery("from Admin").getResultList();;
+ 	  
+ 	   return admins;
+
+  
+ 	      }
+    
+    public Admin getAdminById(int id){
+ 	   Admin admin=  em.find(Admin.class, id);
+ 	  
+ 	   return admin;
+
+  
+ 	      }
+    
+    public void addAdmin(Admin a){
+ 	 em.persist(a);
+ 	  em.flush();
+ 	  
+  
+ 	      }
 
 }
