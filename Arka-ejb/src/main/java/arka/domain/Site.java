@@ -16,6 +16,8 @@ public class Site implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
      @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
+
      int idSite;
      
      String name;

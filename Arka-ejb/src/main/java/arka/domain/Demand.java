@@ -15,6 +15,8 @@ public class Demand implements Serializable {
 
 	
 	@Id
+	 @GeneratedValue(strategy = GenerationType.AUTO)
+
 	int idDemand;
 	
 	String note;

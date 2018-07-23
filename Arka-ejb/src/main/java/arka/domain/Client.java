@@ -15,6 +15,8 @@ public class Client implements Serializable {
 
 	 
 	@Id
+	 @GeneratedValue(strategy = GenerationType.AUTO)
+
 	int idClient;
 	
     String nom;
