@@ -29,11 +29,6 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
     {
     	return entityManager.createQuery("SELECT d FROM Demand d ",Demand.class).getResultList();
     }
-    @Override
-    public void getNotifs(Demand demande)
-    {
-    	entityManager.persist(demande); 	
-    }
     
     @Override
     public void addDemand(Demand demande)
@@ -65,5 +60,6 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 		entityManager.persist(agent);
 		return true;
 	}
+
 
 }

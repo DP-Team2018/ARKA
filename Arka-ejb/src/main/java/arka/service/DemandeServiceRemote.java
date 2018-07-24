@@ -11,7 +11,6 @@ import arka.domain.Demand;
 public interface DemandeServiceRemote {
 
 	List<Demand> getDemands();
-	void getNotifs(Demand demande);
 	void addDemand(Demand demande);
 	void updateDemand(Demand demande);
 	void deleteDemand(Demand demande);

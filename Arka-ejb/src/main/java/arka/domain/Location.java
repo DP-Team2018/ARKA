@@ -24,7 +24,6 @@ public class Location implements Serializable {
 	int row ;
 	//
 	int driveway;
-	
 	boolean empty;
 	@OneToOne
     private Carton carton;
