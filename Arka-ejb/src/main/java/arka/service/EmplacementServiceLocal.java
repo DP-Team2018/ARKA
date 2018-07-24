@@ -11,7 +11,7 @@ import arka.domain.Location;
 
 @Local
 public interface EmplacementServiceLocal {
-public void ajouter_emplacement(Location location);
+public boolean ajouter_emplacement(Location location);
 public void merge_emplacement(Location location);
 public List<Location> afficher_emplacement();
 public void remplir_emplacement(Location location);
