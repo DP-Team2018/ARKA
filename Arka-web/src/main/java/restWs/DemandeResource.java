@@ -57,13 +57,6 @@ public class DemandeResource {
 		return Response.status(Status.NO_CONTENT).build();
 	}
 	
-	@POST
-	@Path("/post")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)	
-	public Response getDemandes(Demand demande){
-		ds.getNotifs(demande); 
-		return Response.status(Status.OK).build();
-	}
+
 	
 }
