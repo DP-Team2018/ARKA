@@ -30,8 +30,9 @@ public class EmplacementService implements EmplacementServiceRemote, Emplacement
     }
 
 	@Override
-	public void ajouter_emplacement(Location location) {
-		em.persist(location);
+	public boolean ajouter_emplacement(Location location) {
+		 em.persist(location);
+		return true;
 		
 	}
 
