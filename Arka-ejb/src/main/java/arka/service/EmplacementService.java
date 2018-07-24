@@ -31,8 +31,9 @@ public class EmplacementService implements EmplacementServiceRemote, Emplacement
     }
 
 	@Override
-	public void ajouter_emplacement(Location location) {
-		em.persist(location);
+	public boolean ajouter_emplacement(Location location) {
+		 em.persist(location);
+		return true;
 		
 	}
 
@@ -80,14 +81,6 @@ public class EmplacementService implements EmplacementServiceRemote, Emplacement
 		
 	}
 
-	@Override
-	public Agent get_agent(Carton carton) {
-		List<Report> reports=carton.getReports();
-		for(Report r:reports)
-		{
-			
-		}
-		return null;
-	}
+	
 
 }
