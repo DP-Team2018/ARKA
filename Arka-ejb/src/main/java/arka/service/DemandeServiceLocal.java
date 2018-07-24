@@ -15,8 +15,7 @@ import arka.domain.DemandType;
 @Local
 public interface DemandeServiceLocal {
 
-	List<Demand> getDemands();
-	void addDemand(Demand demande);
+
 	List<Demand> getDemands();//ok 
 	//void getNotifs(Demand demande);
 	void addDemand(Demand demande);//ok

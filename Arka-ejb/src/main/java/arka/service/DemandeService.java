@@ -25,7 +25,7 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
     public DemandeService() {
     	
     }
-    
+    @Override
     public List<Demand> getDemands()
     {
     	return entityManager.createQuery("SELECT d FROM Demand d ",Demand.class).getResultList();
