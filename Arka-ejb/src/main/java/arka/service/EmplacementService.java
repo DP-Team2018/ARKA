@@ -12,7 +12,6 @@ import javax.persistence.PersistenceContext;
 import arka.domain.Agent;
 import arka.domain.Carton;
 import arka.domain.Location;
-import arka.domain.Report;
 
 /**
  * Session Bean implementation class EmplacementService
@@ -80,14 +79,6 @@ public class EmplacementService implements EmplacementServiceRemote, Emplacement
 		
 	}
 
-	@Override
-	public Agent get_agent(Carton carton) {
-		List<Report> reports=carton.getReports();
-		for(Report r:reports)
-		{
-			
-		}
-		return null;
-	}
+	
 
 }
