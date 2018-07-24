@@ -25,20 +25,21 @@ public class Location implements Serializable {
 	//
 	int driveway;
 	boolean empty;
-	@OneToOne
-    private Carton carton;
 	
 	@ManyToOne
 	private Site site;
 
+	
+	@OneToOne
+	private Carton carton;
 
-	public Location(int line, int row, int driveway, boolean empty, Carton carton) {
+	public Location(int line, int row, int driveway, boolean empty) {
 		super();
 		this.line = line;
 		this.row = row;
 		this.driveway = driveway;
 		this.empty = empty;
-		this.carton = carton;
+		
 	}
 
 
@@ -79,14 +80,7 @@ public class Location implements Serializable {
 	}
 
 
-	public Carton getCarton() {
-		return carton;
-	}
 
-
-	public void setCarton(Carton carton) {
-		this.carton = carton;
-	}
 
 
 	public int getRow() {
@@ -106,6 +100,26 @@ public class Location implements Serializable {
 
 	public void setDriveway(int driveway) {
 		this.driveway = driveway;
+	}
+
+
+	public Site getSite() {
+		return site;
+	}
+
+
+	public void setSite(Site site) {
+		this.site = site;
+	}
+
+
+	public Carton getCarton() {
+		return carton;
+	}
+
+
+	public void setCarton(Carton carton) {
+		this.carton = carton;
 	}
 
 	
