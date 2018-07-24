@@ -1,6 +1,7 @@
 package arka.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -27,11 +28,11 @@ public class Client implements Serializable {
     String numTel;
     String nomResp;//getset
 	
-    @OneToMany (mappedBy="client")
+    @OneToMany (mappedBy="client",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<Demand> demands;
     
 	
-    @OneToMany (mappedBy="client")
+    @OneToMany (mappedBy="client",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<Carton> cartons;
     
 	private static final long serialVersionUID = 1L;

@@ -10,10 +10,11 @@ import arka.domain.Demand;
 @Remote
 public interface DemandeServiceRemote {
 
-	List<Demand> getNotif(Demand demande);
+	List<Demand> getDemands();
+	void getNotifs(Demand demande);
 	void addDemand(Demand demande);
 	void updateDemand(Demand demande);
 	void deleteDemand(Demand demande);
-	void getDemandById(String id);
-	boolean affecterDemande(Agent agent);
+	Demand getDemandById(int id);
+	boolean affecterDemande(Agent agent, List<Demand> demandes);
 }

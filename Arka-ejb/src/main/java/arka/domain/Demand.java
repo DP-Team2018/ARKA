@@ -18,27 +18,39 @@ public class Demand implements Serializable {
 	 @GeneratedValue(strategy = GenerationType.AUTO)
 
 	int idDemand;
-	
-	String note;
-	
-	DemandType demandType;
-	
-	Date date;
-	
-	int idCartonClient;
-	
+	String note;	
+	DemandType demandType;	
+	Date date;	
+	int idCartonClient;	
 	Date assignmentDate;
-	
 	DemandState demandState;
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	Client client;
-	
-	
 	@ManyToOne
 	Admin admin;
+	@ManyToOne
+	Agent agent;
+	@ManyToOne
+	Agent Carton;
 	
 	
 	
+	public Agent getAgent() {
+		return agent;
+	}
+
+	public void setAgent(Agent agent) {
+		this.agent = agent;
+	}
+
+	public Agent getCarton() {
+		return Carton;
+	}
+
+	public void setCarton(Agent carton) {
+		Carton = carton;
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	public Demand() {

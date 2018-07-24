@@ -12,7 +12,6 @@ import javax.persistence.PersistenceContext;
 import arka.domain.Agent;
 import arka.domain.Carton;
 import arka.domain.Location;
-import arka.domain.Report;
 
 /**
  * Session Bean implementation class EmplacementService
