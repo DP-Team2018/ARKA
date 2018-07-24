@@ -25,12 +25,10 @@ public class Carton implements Serializable {
     @ManyToOne
 	Client client; 
     Date destructionDate;
-    @OneToMany (mappedBy="Carton")
+
+    @OneToMany (mappedBy="Carton",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
    	private List<Demand> demands ;
     
-    @OneToMany (mappedBy="carton")
-   	private List<Report> reports ;
->>>>>>> branch 'master' of https://github.com/DP-Team2018/ARKA.git
 	public Carton() {
 		super();
 	}
