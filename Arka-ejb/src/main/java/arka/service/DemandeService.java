@@ -25,12 +25,14 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
     	
     }
     
-    @Override
-    public List<Demand> getNotif(Demand demande)
+    public List<Demand> getDemands()
     {
-    	ArrayList<Demand> listDemandes = new ArrayList<Demand>();
-		return listDemandes; 
-    	
+    	return entityManager.createQuery("SELECT d FROM Demand d ",Demand.class).getResultList();
+    }
+    @Override
+    public void getNotifs(Demand demande)
+    {
+    	entityManager.persist(demande); 	
     }
     
     @Override
@@ -51,15 +53,17 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 	}
 
 	@Override
-	public void getDemandById(String id) {
-		// TODO Auto-generated method stub
+	public Demand getDemandById(int id) {
+		return entityManager.createQuery("Select d from Demand d where d.idDemand=?1", Demand.class)
+				.setParameter(1,id).getSingleResult();
 		
 	}
 
 	@Override
-	public boolean affecterDemande(Agent agent) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean affecterDemande(Agent agent, List<Demand> demandes) {
+		agent.setDemandes(demandes);
+		entityManager.persist(agent);
+		return true;
 	}
 
 }

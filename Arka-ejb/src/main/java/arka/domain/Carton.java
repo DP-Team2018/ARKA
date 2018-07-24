@@ -17,21 +17,17 @@ public class Carton implements Serializable {
 	private static final long serialVersionUID = 1L;
     @Id
     int idCarton;
-    
-    int idCartonClient;
-    
+    int idCartonClient;   
     Date arrivalDate;
-    
     long duration;
     @OneToOne
     private Location locale;
     @ManyToOne
-	Client client;
-    
+	Client client; 
     Date destructionDate;
+    @OneToMany (mappedBy="Carton")
+   	private List<Demand> demands ;
     
-    @OneToMany (mappedBy="carton")
-   	private List<Report> reports ;
 	public Carton() {
 		super();
 	}
@@ -97,13 +93,13 @@ public class Carton implements Serializable {
 	}
 
 
-	public List<Report> getReports() {
-		return reports;
+	public List<Demand> getReports() {
+		return demands;
 	}
 
 
-	public void setReports(List<Report> reports) {
-		this.reports = reports;
+	public void setReports(List<Demand> demands) {
+		this.demands = demands;
 	}
 
 

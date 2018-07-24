@@ -6,7 +6,6 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import arka.domain.Admin;
 
 /**
@@ -29,12 +28,9 @@ public class AdminService implements AdminServiceRemote, AdminServiceLocal {
     }
     
     public List<Admin> getAllAdmin(){
- 	   List<Admin> admins=  em.createQuery("from Admin").getResultList();;
+ 	   return  em.createQuery("SELECT a FROM Admin a",Admin.class).getResultList();
  	  
- 	   return admins;
-
-  
- 	      }
+    }
     
     public Admin getAdminById(int id){
  	   Admin admin=  em.find(Admin.class, id);
