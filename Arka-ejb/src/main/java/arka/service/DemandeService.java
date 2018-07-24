@@ -3,6 +3,7 @@ package arka.service;
 import arka.domain.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -64,6 +65,46 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 		agent.setDemandes(demandes);
 		entityManager.persist(agent);
 		return true;
+	}
+
+	@Override
+	public void affecterCartonDemand(Carton carton, Demand demand) {
+		demand.setCarton(carton);
+		entityManager.merge(demand);
+		
+	}
+
+	@Override
+	public List<Demand> getDemandsByCLient(int idClient) {
+		Client client= entityManager.find(Client.class, idClient);
+		List<Demand> demands = client.getDemands();
+		return demands;
+	}
+
+	@Override
+	public List<Demand> getDemandsByCLient(Client client) {
+		List<Demand> demands = client.getDemands();
+		return demands;
+	}
+
+	@Override
+	public List<Demand> getDemandsByDate(Date date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+	@Override
+	public List<Demand> getDemandsByEtat(DemandType demanType) {
+		
+		return null;
+	}
+
+	@Override
+	public List<Demand> getDemandsByState(DemandState demandState) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -31,7 +31,7 @@ public class Demand implements Serializable {
 	@ManyToOne
 	Agent agent;
 	@ManyToOne
-	Agent Carton;
+	Carton Carton;
 	
 	
 	
@@ -43,11 +43,11 @@ public class Demand implements Serializable {
 		this.agent = agent;
 	}
 
-	public Agent getCarton() {
+	public Carton getCarton() {
 		return Carton;
 	}
 
-	public void setCarton(Agent carton) {
+	public void setCarton(Carton carton) {
 		Carton = carton;
 	}
 
