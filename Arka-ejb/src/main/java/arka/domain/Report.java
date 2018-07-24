@@ -17,21 +17,23 @@ public class Report implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	 @GeneratedValue(strategy = GenerationType.AUTO)
-
 	int idReport;
 	
 	 Date date;
 	 
 	 ReportType reportType;
 	 
-	 @ManyToOne
-      Carton carton;
+	 @ManyToOne(fetch=FetchType.EAGER)
+     Carton carton;
 	 
-	 @ManyToOne
-	   Agent agent;
+	 @OneToOne(fetch=FetchType.LAZY)
+	 Demand demand;
 	 
-	 @OneToOne
-	   Demand demand;
+	 //non
+	 @ManyToOne
+	 Agent agent;
+	 
+	
 	 
 	public Report(int idReport, String note, Date date, ReportType reportType) {
 		super();

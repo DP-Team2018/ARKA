@@ -116,8 +116,7 @@ public class ReportService implements ReportServiceRemote, ReportServiceLocal {
 
 	@Override
 	public List<Report> findAll() {
-		 List<Report> reports=  em.createQuery("from Report").getResultList();;
-	 	  
+		 List<Report> reports=  em.createQuery("from Report").getResultList();
 	 	   return reports;
 	}
 

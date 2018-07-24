@@ -28,9 +28,7 @@ public class Carton implements Serializable {
     @OneToMany (mappedBy="Carton")
    	private List<Demand> demands ;
     
-<<<<<<< HEAD
-=======
-    @OneToMany (mappedBy="carton",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+    @OneToMany (mappedBy="carton")
    	private List<Report> reports ;
 >>>>>>> branch 'master' of https://github.com/DP-Team2018/ARKA.git
 	public Carton() {

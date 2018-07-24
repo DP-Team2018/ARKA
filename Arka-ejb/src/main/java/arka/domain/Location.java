@@ -26,20 +26,18 @@ public class Location implements Serializable {
 	int driveway;
 	
 	boolean empty;
-	@OneToOne
-    private Carton carton;
 	
 	@ManyToOne
 	private Site site;
 
 
-	public Location(int line, int row, int driveway, boolean empty, Carton carton) {
+	public Location(int line, int row, int driveway, boolean empty) {
 		super();
 		this.line = line;
 		this.row = row;
 		this.driveway = driveway;
 		this.empty = empty;
-		this.carton = carton;
+		
 	}
 
 
@@ -80,14 +78,7 @@ public class Location implements Serializable {
 	}
 
 
-	public Carton getCarton() {
-		return carton;
-	}
 
-
-	public void setCarton(Carton carton) {
-		this.carton = carton;
-	}
 
 
 	public int getRow() {
