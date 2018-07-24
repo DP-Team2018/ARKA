@@ -27,9 +27,14 @@ public class Agent  implements Serializable {
 	String adress;
     String numTel;
     
+<<<<<<< HEAD
     
     @OneToMany (mappedBy="agent")
 	private List<Demand> demandes;
+=======
+    @OneToMany (mappedBy="agent",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	private List<Report> reports;
+>>>>>>> branch 'master' of https://github.com/DP-Team2018/ARKA.git
     
 	public Agent() {
 		super();
