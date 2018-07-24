@@ -18,5 +18,4 @@ public void remplir_emplacement(Location location);
 public void vider_emplacement(Location location);
 public List<Location> rechercher_emplacement_carton(int codecarton,int id_client,Date date_entree,String matricule_agent);
 public void supprimer_emplacement(Location location);
-public Agent get_agent(Carton carton);
 }
