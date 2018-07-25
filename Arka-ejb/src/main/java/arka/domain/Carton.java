@@ -26,7 +26,7 @@ public class Carton implements Serializable {
 	Client client; 
     Date destructionDate;
 
-    @OneToMany (mappedBy="Carton",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+    @OneToMany (mappedBy="Carton",cascade=CascadeType.ALL)
    	private List<Demand> demands ;
     
 	public Carton() {

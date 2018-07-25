@@ -50,7 +50,8 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 
 	@Override
 	public Demand getDemandById(int id) {
-		return entityManager.find(Demand.class, id);
+		return entityManager.createQuery("Select d from Demand d where d.idDemand=?1", Demand.class)
+				.setParameter(1,id).getSingleResult();
 		
 	}
 
@@ -101,12 +102,8 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 
 	@Override
 	public List<Demand> getDemandsByState(DemandState demandState) {
-
-		List<Demand> demandes = entityManager.createQuery("SELECT d FROM Demand d WHERE d.demandState=?1",Demand.class)
-				.setParameter(1,demandState)
-				.getResultList(); 
-		
-		return demandes;
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

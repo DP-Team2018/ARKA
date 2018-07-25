@@ -3,6 +3,8 @@ package arka.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -29,6 +31,7 @@ public class Client implements Serializable {
     String nomResp;//getset
 	
     @OneToMany (mappedBy="client",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+    @JsonIgnore
 	private List<Demand> demands;
     
 	

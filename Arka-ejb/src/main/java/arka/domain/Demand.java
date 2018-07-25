@@ -24,7 +24,7 @@ public class Demand implements Serializable {
 	int idCartonClient;	
 	Date assignmentDate;
 	DemandState demandState;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	Client client;
 	@ManyToOne
 	Admin admin;
