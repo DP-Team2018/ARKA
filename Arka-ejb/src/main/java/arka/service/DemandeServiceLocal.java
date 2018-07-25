@@ -29,6 +29,7 @@ public interface DemandeServiceLocal {
 	List<Demand> getDemandsByDate(Date date);
 	List<Demand> getDemandsByType(DemandType demanType);
 	List<Demand> getDemandsByState(DemandState demandState);
+	void ChangerStateDemand(DemandState demandState,int idDemand);
 	
 	
 

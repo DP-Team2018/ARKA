@@ -1,6 +1,10 @@
 package restWs;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
@@ -16,10 +20,15 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
+import utilities.SendMail;
 
 import javax.ws.rs.core.Response.Status;
 
 import arka.domain.Demand;
+import arka.domain.DemandState;
 import arka.domain.DemandType;
 import arka.service.DemandeService;
 
@@ -32,7 +41,7 @@ import arka.service.DemandeService;
 public class DemandeResource {
 
 	private static List<Demand> demandes = new ArrayList<Demand>();
-	
+	private final String KEY_B64 = Base64.getEncoder().encodeToString("secret".getBytes());
 	@EJB
 	DemandeService ds ;
 	
@@ -62,9 +71,9 @@ public class DemandeResource {
 	
 	
 	@GET
-	@Path("{Type}")
+	@Path("type/{Type}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response DisplayByType(@PathParam("Type") DemandType demandType){
+	public Response displayByType(@PathParam("Type") DemandType demandType){
 		List<Demand> demandes = ds.getDemandsByType(demandType); 
 		if(demandes!=null)
 		{
@@ -74,10 +83,33 @@ public class DemandeResource {
 	}
 	
 	@GET
-	@Path("{Date}")
+	@Path("date/{Date}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response DisplayByType(@PathParam("Date") Date date){
-		List<Demand> demandes = ds.getDemandsByDate(date); 
+	public Response displayByDate(@PathParam("Date") String date) throws ParseException{
+		  SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	        Date parsed = format.parse(date);
+	        java.sql.Date sql = new java.sql.Date(parsed.getTime());
+		List<Demand> demandes = ds.getDemandsByDate(parsed); 
+		if(demandes!=null)
+		{
+			return Response.status(Status.OK).entity(demandes).build();
+		}
+		return Response.status(Status.NO_CONTENT).build();
+	}
+	
+	
+//	Jws<Claims> jws = null;
+//	jws = Jwts.parser().setSigningKey(Base64.getDecoder().decode(KEY_B64)).parseClaimsJws(token);
+//	int iduser = Integer.parseInt(jws.getBody().get("id").toString());
+   
+	@GET
+	@Path("/changeDemandState/{state}/{idDemand}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response changeDemandState(@PathParam("state") DemandState demandState,@PathParam("idDemand") int id) throws ParseException{
+		ds.ChangerStateDemand(demandState,id);
+		Demand demand= ds.getDemandById(id);
+	    SendMail sm= new SendMail();
+	    sm.sendmail("kadhem94@gmail.com","kilanikadhem@outlook.fr", "kasouma1994", "Votre Demande de ");
 		if(demandes!=null)
 		{
 			return Response.status(Status.OK).entity(demandes).build();
