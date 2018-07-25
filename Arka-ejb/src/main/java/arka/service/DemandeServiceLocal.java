@@ -27,7 +27,7 @@ public interface DemandeServiceLocal {
 	List<Demand> getDemandsByCLient(int idClient);//ok
 	List<Demand> getDemandsByCLient(Client client);//ok
 	List<Demand> getDemandsByDate(Date date);
-	List<Demand> getDemandsByEtat(DemandType demanType);
+	List<Demand> getDemandsByType(DemandType demanType);
 	List<Demand> getDemandsByState(DemandState demandState);
 	
 	

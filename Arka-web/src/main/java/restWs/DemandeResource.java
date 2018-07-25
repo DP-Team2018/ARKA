@@ -1,6 +1,7 @@
 package restWs;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -19,6 +20,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import arka.domain.Demand;
+import arka.domain.DemandType;
 import arka.service.DemandeService;
 
 
@@ -51,6 +53,32 @@ public class DemandeResource {
 	public Response showById(@PathParam("id") int id){
 		Demand demande = ds.getDemandById(id); 
 		if(demande!=null)
+		{
+			return Response.status(Status.OK).entity(demandes).build();
+		}
+		return Response.status(Status.NO_CONTENT).build();
+	}
+	
+	
+	
+	@GET
+	@Path("{Type}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response DisplayByType(@PathParam("Type") DemandType demandType){
+		List<Demand> demandes = ds.getDemandsByType(demandType); 
+		if(demandes!=null)
+		{
+			return Response.status(Status.OK).entity(demandes).build();
+		}
+		return Response.status(Status.NO_CONTENT).build();
+	}
+	
+	@GET
+	@Path("{Date}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response DisplayByType(@PathParam("Date") Date date){
+		List<Demand> demandes = ds.getDemandsByDate(date); 
+		if(demandes!=null)
 		{
 			return Response.status(Status.OK).entity(demandes).build();
 		}
