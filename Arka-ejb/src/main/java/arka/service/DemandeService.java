@@ -85,16 +85,19 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 
 	@Override
 	public List<Demand> getDemandsByDate(Date date) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Demand> demands = entityManager.createQuery("Select d from Demand d where d.date=?1", Demand.class)
+				.setParameter(1,date).getResultList();
+		return demands;
+		
 	}
 
 	
 
 	@Override
-	public List<Demand> getDemandsByEtat(DemandType demanType) {
-		
-		return null;
+	public List<Demand> getDemandsByType(DemandType demandType) {
+		List<Demand> demands = entityManager.createQuery("Select d from Demand d where d.demandType=?1", Demand.class)
+				.setParameter(1,demandType).getResultList();
+		return demands;
 	}
 
 	@Override
@@ -102,5 +105,6 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 }
