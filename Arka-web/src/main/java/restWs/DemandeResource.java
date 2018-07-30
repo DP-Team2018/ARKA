@@ -14,12 +14,15 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 
 
 import javax.ws.rs.core.Response.Status;
 
+import arka.domain.Agent;
 import arka.domain.Demand;
+import arka.domain.DemandState;
 import arka.domain.DemandType;
 import arka.service.DemandeService;
 
@@ -54,7 +57,7 @@ public class DemandeResource {
 		Demand demande = ds.getDemandById(id); 
 		if(demande!=null)
 		{
-			return Response.status(Status.OK).entity(demandes).build();
+			return Response.status(Status.OK).entity(demande).build();
 		}
 		return Response.status(Status.NO_CONTENT).build();
 	}
@@ -76,7 +79,7 @@ public class DemandeResource {
 	@GET
 	@Path("{Date}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response DisplayByType(@PathParam("Date") Date date){
+	public Response DisplayByDate(@PathParam("Date") Date date){
 		List<Demand> demandes = ds.getDemandsByDate(date); 
 		if(demandes!=null)
 		{
@@ -85,6 +88,66 @@ public class DemandeResource {
 		return Response.status(Status.NO_CONTENT).build();
 	}
 	
+	@GET
+	@Path("{State}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response DisplayByState(@PathParam("State") DemandState state){
+		List<Demand> demandes = ds.getDemandsByState(state); 
+		if(demandes!=null)
+		{
+			return Response.status(Status.OK).entity(demandes).build();
+		}
+		return Response.status(Status.NO_CONTENT).build();
+	}
+	
+	@GET
+	@Path("{Agent}/{Demand}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response AffectDemande(@PathParam("Agent") int idAgent, @PathParam("Demand") int idDemande){
+		Demand demandeAffecte = ds.affecterDemande(idAgent, idDemande); 
+		if(demandes!=null)
+		{
+			return Response.status(Status.OK).entity("agent affecté à la demande" + demandeAffecte).build();
+		}
+		return Response.status(Status.NO_CONTENT).build();
+	}
+	
+	@GET
+	@Path("{Client}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response DisplayByClient(@PathParam("Client") int idClient){
+		List<Demand> demandes = ds.getDemandsByCLient(idClient); 
+		if(demandes!=null)
+		{
+			return Response.status(Status.OK).entity(demandes).build();
+		}
+		return Response.status(Status.NO_CONTENT).build();
+	}
+	
+//	@GET
+//	@Path("{Demand}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Response DeleteDemand(@PathParam("Demand") int idDemand){
+//		List<Demand> demandes = ds.deleteDemand(idDemand);
+//		if(demandes!=null)
+//		{
+//			return Response.status(Status.OK).entity(demandes).build();
+//		}
+//		return Response.status(Status.NO_CONTENT).build();
+//	}
+	
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response AddDemand(Demand demande) 
+	{
+		if( demande == null){
+			return Response.status(Status.NO_CONTENT).build();
+		}
+		ds.addDemand(demande);
+		return Response.status(Status.OK).entity(demande).build();
+	}
 	
 	
 }

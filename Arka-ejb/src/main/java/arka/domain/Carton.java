@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.util.List;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Entity implementation class for Entity: Carton
  *
@@ -21,12 +23,15 @@ public class Carton implements Serializable {
     Date arrivalDate;
     long duration;
     @OneToOne
+    @JsonIgnore
     private Location locale;
     @ManyToOne
+  
 	Client client; 
     Date destructionDate;
 
-    @OneToMany (mappedBy="Carton",cascade=CascadeType.ALL)
+    @OneToMany (mappedBy="Carton",cascade=CascadeType.PERSIST, fetch= FetchType.EAGER)
+    @JsonIgnore
    	private List<Demand> demands ;
     
 	public Carton() {
@@ -94,12 +99,12 @@ public class Carton implements Serializable {
 	}
 
 
-	public List<Demand> getReports() {
+	public List<Demand> getDemands() {
 		return demands;
 	}
 
 
-	public void setReports(List<Demand> demands) {
+	public void setDemands(List<Demand> demands) {
 		this.demands = demands;
 	}
 

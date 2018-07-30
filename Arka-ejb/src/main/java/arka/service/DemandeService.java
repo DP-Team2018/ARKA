@@ -43,7 +43,8 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 	}
 
 	@Override
-	public void deleteDemand(Demand demande) {
+	public void deleteDemand(int idDemand) {
+		Demand demande = getDemandById(idDemand);
 		entityManager.remove(entityManager.merge(demande));
 		
 	}
@@ -54,12 +55,21 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 				.setParameter(1,id).getSingleResult();
 		
 	}
+	
+	@Override
+	public Agent getAgentById(int id) {
+		return entityManager.createQuery("Select d from Agent d where d.idAgent=?1", Agent.class)
+				.setParameter(1,id).getSingleResult();
+		
+	}
 
 	@Override
-	public boolean affecterDemande(Agent agent, List<Demand> demandes) {
-		agent.setDemandes(demandes);
+	public Demand affecterDemande(int idAgent, int idDemand) {
+		Demand demande = getDemandById(idDemand);
+		Agent agent = getAgentById(idAgent);
+		demande.setAgent(agent);
 		entityManager.persist(agent);
-		return true;
+		return demande;
 	}
 
 
@@ -73,12 +83,6 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 	@Override
 	public List<Demand> getDemandsByCLient(int idClient) {
 		Client client= entityManager.find(Client.class, idClient);
-		List<Demand> demands = client.getDemands();
-		return demands;
-	}
-
-	@Override
-	public List<Demand> getDemandsByCLient(Client client) {
 		List<Demand> demands = client.getDemands();
 		return demands;
 	}
@@ -102,6 +106,22 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 
 	@Override
 	public List<Demand> getDemandsByState(DemandState demandState) {
+		List<Demand> demands = entityManager.createQuery("Select d from Demand d where d.demandState=?1", Demand.class)
+				.setParameter(1,demandState).getResultList();
+		return demands;
+	}
+	@Override
+	public void deleteDemand(Demand demande) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public boolean affecterDemande(Agent agent, List<Demand> demandes) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public List<Demand> getDemandsByCLient(Client client) {
 		// TODO Auto-generated method stub
 		return null;
 	}

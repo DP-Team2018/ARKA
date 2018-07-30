@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Entity implementation class for Entity: Admin
  *
@@ -25,8 +27,7 @@ public class Admin  implements Serializable {
 		String email;
 		String adress;
 	    String numTel;
-	    @OneToMany (mappedBy="admin",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-		private List<Demand> demands;
+
 	     
 	public Admin() {
 		super();
@@ -111,15 +112,7 @@ public class Admin  implements Serializable {
 
 
 
-	public List<Demand> getDemands() {
-		return demands;
-	}
-
-
-
-	public void setDemands(List<Demand> demands) {
-		this.demands = demands;
-	}
+	
 	
 	
 	
