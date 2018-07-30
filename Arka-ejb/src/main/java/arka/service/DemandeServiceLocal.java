@@ -28,6 +28,7 @@ public interface DemandeServiceLocal {
 	List<Demand> getDemandsByState(DemandState demandState);
 	Agent getAgentById(int id);
 	Demand affecterDemande(int idAgent, int idDemand);
+	void ChangerStateDemand(DemandState demandState,int idDemand);
 	
 	
 

@@ -125,6 +125,14 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public void ChangerStateDemand(DemandState demandState, int Demandid) {
+		Demand demand= entityManager.find(Demand.class,Demandid);
+		demand.setDemandState(demandState);
+		entityManager.merge(demand);
+		entityManager.flush();
+		
+	}
 	
 
 }
