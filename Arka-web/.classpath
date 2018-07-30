@@ -23,5 +23,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/home/kadhem/Downloads/javamail-1.4/mail.jar"/>
+	<classpathentry kind="lib" path="/home/kadhem/Downloads/javamail-1.4/javaee.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
