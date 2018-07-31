@@ -47,4 +47,19 @@ public class AdminService implements AdminServiceRemote, AdminServiceLocal {
   
  	      }
 
+	@Override
+	public void updateAdmin(Admin a) {
+		em.merge(a);
+		
+	}
+
+	@Override
+	public void deleteAdmin(int id) {
+		Admin a = em.find(Admin.class, id);
+		//emt.getTransaction().begin();
+		  em.remove(a);
+	    // emt.getTransaction().commit();
+		
+	}
+
 }
