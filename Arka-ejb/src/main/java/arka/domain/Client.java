@@ -36,6 +36,7 @@ public class Client implements Serializable {
     
 	
     @OneToMany (mappedBy="client",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+    @JsonIgnore
 	private List<Carton> cartons;
     
 	private static final long serialVersionUID = 1L;

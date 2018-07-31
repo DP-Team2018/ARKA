@@ -28,8 +28,7 @@ public class Agent  implements Serializable {
     String numTel;
     
     
-    @OneToMany (mappedBy="agent",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-    private List<Demand> demandes;
+   
     
 	public Agent() {
 		super();
@@ -91,17 +90,7 @@ public class Agent  implements Serializable {
 
 
 
-	public List<Demand> getDemandes() {
-		return demandes;
-	}
 
-
-
-	public void setDemandes(List<Demand> demandes) {
-		this.demandes = demandes;
-	}
-	
-	
    
 	
 }

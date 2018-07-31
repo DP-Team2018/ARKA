@@ -5,6 +5,8 @@ import java.sql.Date;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Entity implementation class for Entity: Demand
  *
@@ -32,7 +34,6 @@ public class Demand implements Serializable {
 	Agent agent;
 	@ManyToOne
 	Carton Carton;
-	
 	
 	
 	public Agent getAgent() {
