@@ -3,6 +3,8 @@ package arka.domain;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Entity implementation class for Entity: Location
  *
@@ -30,7 +32,8 @@ public class Location implements Serializable {
 	private Site site;
 
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@JsonIgnore
 	private Carton carton;
 
 	public Location(int line, int row, int driveway, boolean empty) {

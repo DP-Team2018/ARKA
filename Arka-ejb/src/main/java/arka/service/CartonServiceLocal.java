@@ -9,7 +9,7 @@ import arka.domain.Location;
 
 @Local
 public interface CartonServiceLocal {
-public void ajoutercarton(Carton carton);
+public boolean ajoutercarton(Carton carton);
 public void mergecarton(Carton carton);
 public void affectercarton_au_emplacement(Carton carton,Location location);
 public List<Carton> afficher_carton();
