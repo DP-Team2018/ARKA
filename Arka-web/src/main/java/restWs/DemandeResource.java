@@ -31,7 +31,6 @@ public class DemandeResource {
     
     @EJB
     DemandeService ds ;
-    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response showDemandes(){
