@@ -22,7 +22,7 @@ public class Carton implements Serializable {
     int idCartonClient;   
     Date arrivalDate;
     long duration;
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
     @JsonIgnore
     private Location locale;
     @ManyToOne

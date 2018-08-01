@@ -26,9 +26,9 @@ public class CartonService implements CartonServiceRemote, CartonServiceLocal {
         // TODO Auto-generated constructor stub
     }
 	@Override
-	public void ajoutercarton(Carton carton) {
+	public boolean ajoutercarton(Carton carton) {
 		em.persist(carton);
-		
+		return true;
 	}
 	@Override
 	public void mergecarton(Carton carton) {
@@ -39,7 +39,7 @@ public class CartonService implements CartonServiceRemote, CartonServiceLocal {
 	public void affectercarton_au_emplacement(Carton carton,Location location) {
 		carton.setLocale(location);
 		location.setCarton(carton);
-		
+		location.setEmpty(false);
 	}
 	@Override
 	public List<Carton> afficher_carton() {

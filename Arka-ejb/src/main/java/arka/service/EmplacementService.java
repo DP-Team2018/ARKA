@@ -61,22 +61,34 @@ public class EmplacementService implements EmplacementServiceRemote, Emplacement
 	}
 
 	@Override
-	public List<Location> rechercher_emplacement_carton(int codecarton, int id_client, Date date_entree,
-			String matricule_agent) {
+	public List<Location> rechercher_emplacement_carton(int codecarton, int id_client, Date date_entree) {
 		List lst=new ArrayList<Location>();
 		for(Location d: afficher_emplacement())
 		{
+			if(d.getCarton() !=null)
+			{
+			System.out.println("------------------------------------------"+d.getLine()+"---------------------------");
+			System.out.println("??????????????????????????????????????????"+d.getCarton().getIdCarton()+"???????????????????????????");
+
 			if(d.getCarton().getIdCarton()==codecarton||d.getCarton().getClient().getIdClient()==id_client||d.getCarton().getArrivalDate().equals(date_entree))
 			{
 				lst.add(d);
+			}
 			}
 		}
 		return lst;
 	}
 
 	@Override
-	public void supprimer_emplacement(Location location) {
+	public boolean supprimer_emplacement(Location location) {
 		em.remove(em.merge(location));
+	    return true;
+	}
+
+	@Override
+	public Location rechercher_emplacement_avec_id(int id) {
+		return em.createQuery("SELECT b FROM Location b where b.idLocation=?1", Location.class)
+				.setParameter(1, id).getSingleResult();
 		
 	}
 
