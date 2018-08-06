@@ -17,8 +17,6 @@ public class Agent  implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
-	 @GeneratedValue(strategy = GenerationType.AUTO)
-
 	 String matricule;
 	
 	String nom;
@@ -50,12 +48,20 @@ public class Agent  implements Serializable {
 
 
 
-	public String getidAgent() {
+
+	
+	public String getMatricule() {
 		return matricule;
 	}
-	public void setidAgent(String idAgent) {
-		this.matricule = idAgent;
+
+
+
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
 	}
+
+
+
 	public String getNom() {
 		return nom;
 	}
@@ -86,6 +92,15 @@ public class Agent  implements Serializable {
 	public void setNumTel(String numTel) {
 		this.numTel = numTel;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return this.matricule  +" nom= " + nom ;
+	}
+	
+	
 	
 
 

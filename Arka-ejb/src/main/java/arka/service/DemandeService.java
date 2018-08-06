@@ -4,6 +4,7 @@ import arka.domain.*;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -132,6 +133,16 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 		entityManager.merge(demand);
 		entityManager.flush();
 		
+	}
+	@Override
+	public List<Demand> getDemandsAgnet(String idAgnet) {
+		System.out.println("Ageeeeent"+entityManager.find(Agent.class, idAgnet).toString());
+		List<Demand> demands = entityManager.createQuery("Select d from Demand d where d.agent=?1", Demand.class)
+				.setParameter(1,entityManager.find(Agent.class, idAgnet)).getResultList();
+	   for (Demand demand : demands) {
+		System.out.println(demand.getDate()+"+++++");
+	}
+		return demands;
 	}
 	
 

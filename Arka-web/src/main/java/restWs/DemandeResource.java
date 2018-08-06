@@ -111,6 +111,18 @@ public class DemandeResource {
     	  List<Demand> demande = ds.getDemandsByCLient(id);
           if(demande!=null)
           {
+              return Response.status(Status.OK).entity(demande).build();
+          }
+          return Response.status(Status.NO_CONTENT).build();
+    }
+    
+    @GET
+    @Path("/DemandsAgent/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response displayByAgentID(@PathParam("id") String id) throws ParseException{
+    	demandes  = ds.getDemandsAgnet("Arka1");
+          if(demandes!=null)
+          {
               return Response.status(Status.OK).entity(demandes).build();
           }
           return Response.status(Status.NO_CONTENT).build();
