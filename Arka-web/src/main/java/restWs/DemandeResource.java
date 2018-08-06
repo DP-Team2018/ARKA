@@ -104,5 +104,18 @@ public class DemandeResource {
     }
     
     
+    @GET
+    @Path("/DemandsClient/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response displayByClientID(@PathParam("id") int id) throws ParseException{
+    	  List<Demand> demande = ds.getDemandsByCLient(id);
+          if(demande!=null)
+          {
+              return Response.status(Status.OK).entity(demandes).build();
+          }
+          return Response.status(Status.NO_CONTENT).build();
+    }
+    
+    
     
 }
