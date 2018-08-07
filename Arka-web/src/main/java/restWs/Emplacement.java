@@ -87,16 +87,5 @@ public class Emplacement {
 		return Response.status(Status.NOT_FOUND).build();
 		
 		}
-    @POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addLocation(Location location)
-	{
-		
-		if(emplacementservice.ajouter_emplacement(location)==true)
-		{
-			return Response.status(Status.OK).entity("ok").build();
-		}
-			
-		return Response.status(Status.NO_CONTENT).build();
-	}
+    
 }
