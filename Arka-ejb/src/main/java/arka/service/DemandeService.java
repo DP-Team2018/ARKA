@@ -144,6 +144,15 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 	}
 		return demands;
 	}
+	@Override
+	public List<Demand> getDemandsByCLient(String client) {
+		List<Demand> demands = entityManager.createQuery("Select d from Demand d where d.client.nom LIKE '%"+client+"%'", Demand.class)
+				.getResultList();
+	   for (Demand demand : demands) {
+		System.out.println(demand.getDate()+"+++++");
+	}
+		return demands;
+	}
 	
 
 }
