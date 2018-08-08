@@ -131,6 +131,30 @@ public class Demand implements Serializable {
 	public void setDemandState(DemandState demandState) {
 		this.demandState = demandState;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idDemand;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Demand other = (Demand) obj;
+		if (idDemand != other.idDemand)
+			return false;
+		return true;
+	}
+	
+	
 	
 	
    
