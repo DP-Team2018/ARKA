@@ -33,7 +33,7 @@ public class Demand implements Serializable {
 	@ManyToOne
 	Agent agent;
 	@ManyToOne
-	Carton Carton;
+	Carton carton;
 	
 	
 	public Agent getAgent() {
@@ -44,13 +44,7 @@ public class Demand implements Serializable {
 		this.agent = agent;
 	}
 
-	public Carton getCarton() {
-		return Carton;
-	}
-
-	public void setCarton(Carton carton) {
-		Carton = carton;
-	}
+	
 
 	private static final long serialVersionUID = 1L;
 
@@ -138,6 +132,13 @@ public class Demand implements Serializable {
 		int result = 1;
 		result = prime * result + idDemand;
 		return result;
+	}
+	public Carton getCarton() {
+		return carton;
+	}
+
+	public void setCarton(Carton carton) {
+		this.carton = carton;
 	}
 
 	@Override
