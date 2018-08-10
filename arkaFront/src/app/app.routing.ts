@@ -1,23 +1,24 @@
 // app.routing.ts
 import { Routes, RouterModule } from '@angular/router';
-
-import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 
 const APP_ROUTES: Routes = [
     {
-        path: 'home',
-        component: AppComponent,
+        path: '',
+        component: HomeComponent,
 
     },
     {
-        path: '',
-        component: LoginComponent
+        path: 'login',
+        component: LoginComponent,
+        pathMatch: 'full',
     },
     {
       path: '**',
-      redirectTo: '/home',
+      redirectTo: '',
       pathMatch: 'full',
     }
 ];
