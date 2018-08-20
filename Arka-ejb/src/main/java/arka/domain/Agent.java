@@ -50,7 +50,7 @@ public class Agent  implements Serializable {
 
 
 
-	public String getidAgent() {
+	public String getMatricule() {
 		return matricule;
 	}
 	public void setidAgent(String idAgent) {
