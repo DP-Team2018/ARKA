@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Subject } from 'rxjs';
+import { DemandeService } from './demande.service';
+
+interface myData{
+  obj: Object;
+}
 
 @Component({
   selector: 'app-demande',
@@ -6,10 +13,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./demande.component.css']
 })
 export class DemandeComponent implements OnInit {
+  demandes = {} ;
 
-  constructor() { }
+  constructor(private MyService: DemandeService) { }
 
   ngOnInit() {
+    this.MyService.getData().subscribe(data => {
+      this.demandes = data.obj;
+    });
   }
+
+
 
 }

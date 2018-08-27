@@ -8,7 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { DemandeComponent } from './demande/demande.component';
-
+import { DataTablesModule } from 'angular-datatables';
+import { HttpClientModule} from '@angular/common/http'; 
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { DemandeComponent } from './demande/demande.component';
     BrowserModule,
     Routing,
     AppRoutingModule,
+    DataTablesModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

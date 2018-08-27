@@ -1,3 +1,19 @@
-<p>
-  demande works!
-</p>
+<app-menu></app-menu>
+<div class="datatable-wrapper">
+<table datatable class="row-border hover">
+  <thead>
+    <tr>
+      <th>ID Demande</th>
+      <th>Representant</th>
+      <th>Agent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngfor = 'demande in demandes' >
+      <td>{{demande.id}}</td>
+      <td>{{demande.Representant}}</td>
+      <td>{{demande.agent}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
