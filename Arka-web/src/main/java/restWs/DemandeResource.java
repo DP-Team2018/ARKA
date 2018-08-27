@@ -107,7 +107,7 @@ public class DemandeResource {
         ds.ChangerStateDemand(demandState,id);
         Demand demand= ds.getDemandById(id);
         SendMail sm= new SendMail();
-        sm.sendmail("kadhem94@gmail.com",demand.getClient().getEmail(),"kasouma1994", " Mr . "+demand.getClient().getNomResp() +" \n\n Votre Demande de "+demand.getDate() +" pour un "+demand.getDemandType()+" est "+demand.getDemandState());
+        sm.sendmail("kadhem94@gmail.com","kilani_kadhem@outlook.fr","kasouma1994", " Mr . "+demand.getClient().getNomResp() +" \n\n Votre Demande de "+demand.getDate() +" pour un "+demand.getDemandType()+" est "+demand.getDemandState());
         if(demandes!=null)
         {
             return Response.status(Status.OK).entity(demandes).build();
