@@ -7,7 +7,6 @@ export class DemandeService {
   constructor(private http: HttpClient) { }
 
   getData(){
-    return this.http.get('http://localhost:18080/api/demandes');
+    return this.http.get('http://localhost:18080/arka-web/api/demandes');
     });
-  }
 }
