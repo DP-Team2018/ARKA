@@ -2,6 +2,8 @@ package arka.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -17,8 +19,7 @@ public class Demand implements Serializable {
 
 	
 	@Id
-	 @GeneratedValue(strategy = GenerationType.AUTO)
-
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	int idDemand;
 	String note;	
 	DemandType demandType;	
@@ -32,8 +33,8 @@ public class Demand implements Serializable {
 	Admin admin;
 	@ManyToOne
 	Agent agent;
-	@ManyToOne
-	Carton carton;
+	@ManyToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	List<Carton> cartons;
 	
 	
 	public Agent getAgent() {
@@ -133,12 +134,13 @@ public class Demand implements Serializable {
 		result = prime * result + idDemand;
 		return result;
 	}
-	public Carton getCarton() {
-		return carton;
+	
+	public List<Carton> getCartons() {
+		return cartons;
 	}
 
-	public void setCarton(Carton carton) {
-		this.carton = carton;
+	public void setCartons(List<Carton> cartons) {
+		this.cartons = cartons;
 	}
 
 	@Override

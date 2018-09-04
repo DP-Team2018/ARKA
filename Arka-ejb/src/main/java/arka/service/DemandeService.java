@@ -33,7 +33,7 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
     }
     
     @Override
-    public void addDemand(Demand demande)
+    public void addDemand(ArrayList<Demand> demande)
     {
     	entityManager.persist(demande);
     }
@@ -58,14 +58,14 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 	}
 	
 	@Override
-	public Agent getAgentById(int id) {
-		return entityManager.createQuery("Select d from Agent d where d.idAgent=?1", Agent.class)
+	public Agent getAgentById(String id) {
+		return entityManager.createQuery("Select d from Agent d where d.matricule=?1", Agent.class)
 				.setParameter(1,id).getSingleResult();
 		
 	}
 
 	@Override
-	public Demand affecterDemande(int idAgent, int idDemand) {
+	public Demand affecterDemande(String idAgent, int idDemand) {
 		Demand demande = getDemandById(idDemand);
 		Agent agent = getAgentById(idAgent);
 		demande.setAgent(agent);
@@ -75,8 +75,8 @@ public class DemandeService implements DemandeServiceRemote, DemandeServiceLocal
 
 
 	@Override
-	public void affecterCartonDemand(Carton carton, Demand demand) {
-		demand.setCarton(carton);
+	public void affecterCartonDemand(List<Carton> carton, Demand demand) {
+		demand.setCartons(carton);
 		entityManager.merge(demand);
 		
 	}

@@ -1,5 +1,6 @@
 package arka.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,19 +18,19 @@ public interface DemandeServiceLocal {
 
 
 	List<Demand> getDemands();//ok 
-	void addDemand(Demand demande);//ok
+	void addDemand(ArrayList<Demand> demande);//ok
 	void updateDemand(Demand demande);
 	void deleteDemand(int idDemand);
 	Demand getDemandById(int id);//ok
-	void affecterCartonDemand(Carton carton,Demand demand);//ok
+	void affecterCartonDemand(List<Carton> carton,Demand demand);//ok
 	List<Demand> getDemandsByCLient(int idClient);//ok
 	List<Demand> getDemandsByCLient(String client);//ok
 	List<Demand> getDemandsAgnet(String idAgnet);//ok
 	List<Demand> getDemandsByDate(Date date);
 	List<Demand> getDemandsByType(DemandType demanType);
 	List<Demand> getDemandsByState(DemandState demandState);
-	Agent getAgentById(int id);
-	Demand affecterDemande(int idAgent, int idDemand);
+	Agent getAgentById(String id);
+	Demand affecterDemande(String idAgent, int idDemand);
 	void ChangerStateDemand(DemandState demandState,int idDemand);
 	
 	
