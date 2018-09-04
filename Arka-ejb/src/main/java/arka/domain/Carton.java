@@ -31,11 +31,7 @@ public class Carton implements Serializable {
 	Client client; 
     Date destructionDate;
 
-<<<<<<< HEAD
     @OneToMany (mappedBy="Carton",cascade=CascadeType.ALL, fetch= FetchType.EAGER)
-=======
-    @OneToMany (mappedBy="carton",cascade=CascadeType.ALL, fetch= FetchType.EAGER)
->>>>>>> branch 'master' of https://github.com/DP-Team2018/ARKA.git
     @JsonIgnore
    	private List<Demand> demands ;
     
