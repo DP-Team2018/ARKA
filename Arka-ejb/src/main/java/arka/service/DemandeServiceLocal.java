@@ -23,6 +23,8 @@ public interface DemandeServiceLocal {
 	Demand getDemandById(int id);//ok
 	void affecterCartonDemand(Carton carton,Demand demand);//ok
 	List<Demand> getDemandsByCLient(int idClient);//ok
+	List<Demand> getDemandsByCLient(String client);//ok
+	List<Demand> getDemandsAgnet(String idAgnet);//ok
 	List<Demand> getDemandsByDate(Date date);
 	List<Demand> getDemandsByType(DemandType demanType);
 	List<Demand> getDemandsByState(DemandState demandState);
