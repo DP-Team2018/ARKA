@@ -1,7 +1,7 @@
 package arka.domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import javax.persistence.*;
 
@@ -18,19 +18,20 @@ public class Carton implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     int idCarton;
     int idCartonClient;   
     Date arrivalDate;
     long duration;
     @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-    @JsonIgnore
+    
     private Location locale;
     @ManyToOne
   
 	Client client; 
     Date destructionDate;
 
-    @OneToMany (mappedBy="Carton",cascade=CascadeType.PERSIST, fetch= FetchType.EAGER)
+    @OneToMany (mappedBy="Carton",cascade=CascadeType.ALL, fetch= FetchType.EAGER)
     @JsonIgnore
    	private List<Demand> demands ;
     
@@ -116,6 +117,14 @@ public class Carton implements Serializable {
 
 	public void setDestructionDate(Date destructionDate) {
 		this.destructionDate = destructionDate;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Carton [idCarton=" + idCarton + ", idCartonClient=" + idCartonClient + ", arrivalDate=" + arrivalDate
+				+ ", duration=" + duration + ", locale=" + locale + ", client=" + client + ", destructionDate="
+				+ destructionDate + ", demands=" + demands + "]";
 	}
 	
 	

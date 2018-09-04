@@ -8,7 +8,7 @@ import arka.domain.Site;
 
 @Remote
 public interface SiteServiceRemote {
-	public void addSite(Site s);
+	public boolean addSite(Site s);
 	public List<Site> getAllSite();
 	public void updateSite(Site s);
 

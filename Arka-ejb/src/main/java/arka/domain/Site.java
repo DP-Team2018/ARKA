@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Entity implementation class for Entity: Site
  *
@@ -23,6 +25,7 @@ public class Site implements Serializable {
      String name;
      String address;
      float area;
+     @JsonIgnore
      @OneToMany(mappedBy="site",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
  	private List<Location> locations;
      
@@ -89,6 +92,13 @@ public class Site implements Serializable {
 
 	public void setLocations(List<Location> locations) {
 		this.locations = locations;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Site [idSite=" + idSite + ", name=" + name + ", address=" + address + ", area=" + area + ", locations="
+				+ locations + "]";
 	}
 
 

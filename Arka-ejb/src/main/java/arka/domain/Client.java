@@ -29,7 +29,7 @@ public class Client implements Serializable {
 	String adress;
     String numTel;
     String nomResp;//getset
-	
+	int codeClient;
     @OneToMany (mappedBy="client",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
     @JsonIgnore
 	private List<Demand> demands;
@@ -125,6 +125,19 @@ public class Client implements Serializable {
 
 	public void setNomResp(String nomResp) {
 		this.nomResp = nomResp;
+	}
+
+	public int getCodeClient() {
+		return codeClient;
+	}
+
+	public void setCodeClient(int codeClient) {
+		this.codeClient = codeClient;
+	}
+
+	@Override
+	public String toString() {
+		return "nom=" + nom ;
 	}
 	
 	

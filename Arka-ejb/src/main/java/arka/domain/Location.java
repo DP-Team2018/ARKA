@@ -5,13 +5,19 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
+
+
+
+
+
 /**
  * Entity implementation class for Entity: Location
  *
  */
 @Entity
 
-public class Location implements Serializable {
+public class Location implements Serializable{
 
 	
 	private static final long serialVersionUID = 1L;
@@ -35,7 +41,14 @@ public class Location implements Serializable {
 	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JsonIgnore
 	private Carton carton;
-
+	public Location(int line, int row, int driveway) {
+		super();
+		this.line = line;
+		this.row = row;
+		this.driveway = driveway;
+		
+		
+	}
 	public Location(int line, int row, int driveway, boolean empty) {
 		super();
 		this.line = line;
@@ -124,6 +137,16 @@ public class Location implements Serializable {
 	public void setCarton(Carton carton) {
 		this.carton = carton;
 	}
+	@Override
+	public String toString() {
+		return "line=" + line + ", row=" + row + ", driveway=" + driveway
+				+ ", site=" + site.getName();
+	}
+	
+	
+
+
+	
 
 	
 	
