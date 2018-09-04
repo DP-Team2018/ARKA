@@ -36,11 +36,25 @@ public class DemandeResource {
     public Response showDemandes(){
         demandes = ds.getDemands();
         if(demandes!=null)
-        {
-            return Response.status(Status.OK).entity(demandes).build();
+        {   
+            return Response.status(Status.OK).header("Access-Control-Allow-Origin", "*").entity(demandes).build();
         }
         return Response.status(Status.NO_CONTENT).build();
     }
+    
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response addDeamnd(ArrayList<Demand>  demand){
+       ds.addDemand(demand);
+        if(demandes!=null)
+        {   
+            return Response.status(Status.OK).header("Access-Control-Allow-Origin", "*").entity(demandes).build();
+        }
+        return Response.status(Status.NO_CONTENT).build();
+    }
+    
+
     
     @GET
     @Path("{id}")
@@ -145,6 +159,19 @@ public class DemandeResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response displayByClientName(@PathParam("name") String name) throws ParseException{
     	demandes  = ds.getDemandsByCLient(name);
+          if(demandes!=null)
+          {
+              return Response.status(Status.OK).entity(demandes).build();
+          }
+          return Response.status(Status.NO_CONTENT).build();
+    }
+    
+    @POST
+    @Path("/affecter/{idAg}/{idDem}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public Response AffecterDemandToAgent(@PathParam("idAg") String idAg,@PathParam("idDem") int idDem) throws ParseException{
+    	 ds.affecterDemande(idAg, idDem);
           if(demandes!=null)
           {
               return Response.status(Status.OK).entity(demandes).build();

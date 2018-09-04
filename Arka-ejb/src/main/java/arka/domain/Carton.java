@@ -30,7 +30,7 @@ public class Carton implements Serializable {
 	Client client; 
     Date destructionDate;
 
-    @OneToMany (mappedBy="carton",cascade=CascadeType.ALL, fetch= FetchType.EAGER)
+    @ManyToMany(cascade=CascadeType.ALL, fetch= FetchType.EAGER)
     @JsonIgnore
    	private List<Demand> demands ;
     

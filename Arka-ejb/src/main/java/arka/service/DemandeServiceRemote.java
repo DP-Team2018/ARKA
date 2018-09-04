@@ -1,5 +1,6 @@
 package arka.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,12 +19,12 @@ public interface DemandeServiceRemote {
 
 	List<Demand> getDemands();//ok 
 	//void getNotifs(Demand demande);
-	void addDemand(Demand demande);//ok
+	void addDemand(ArrayList<Demand> demande);//ok
 	void updateDemand(Demand demande);
 	void deleteDemand(Demand demande);//ok
 	Demand getDemandById(int id);//ok
 	boolean affecterDemande(Agent agent, List<Demand> demandes);//ok
-	void affecterCartonDemand(Carton carton,Demand demand);//ok
+	void affecterCartonDemand(List<Carton> carton,Demand demand);//ok
 	List<Demand> getDemandsByCLient(int idClient);//ok
 	List<Demand> getDemandsByCLient(Client client);//ok
 	List<Demand> getDemandsByDate(Date date);
