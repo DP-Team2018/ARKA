@@ -1,18 +1,22 @@
 <app-menu></app-menu>
 <div class="datatable-wrapper">
-<table datatable class="row-border hover">
+<a class="btn btn-default" [routerLink] = "'ajout'">Ajouter une Demande </a>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
   <thead>
     <tr>
       <th>ID Demande</th>
       <th>Representant</th>
-      <th>Agent</th>
+      <th>Type de demande</th>
+      <th>Note</th>
+
     </tr>
   </thead>
   <tbody>
-    <tr *ngfor = 'demande in demandes' >
+    <tr *ngFor = "let demande of demandes " >
       <td>{{demande.id}}</td>
-      <td>{{demande.Representant}}</td>
-      <td>{{demande.agent}}</td>
+      <td>{{demande.title}}</td>
+      <td>{{demande.demandType}}</td>
+      <td>{{demande.note}}</td>
     </tr>
   </tbody>
 </table>

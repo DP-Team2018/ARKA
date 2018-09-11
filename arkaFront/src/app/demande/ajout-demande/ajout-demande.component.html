@@ -1,0 +1,59 @@
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 table-responsive">
+      <form [formGroup]="demandForm" >
+        <table class="table table-bordered table-hover table-sortable" id="tab_logic">
+          <thead>
+            <tr>
+              <th class="text-center">
+                Nom Commercial
+            
+              </th>
+              <th class="text-center">
+                note
+              </th>
+              <th class="text-center">
+                Id carton
+              </th>
+              <th class="text-center">
+                Type de demande
+              </th>
+              <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr *ngFor = "let field of fieldArray; let i = index" >
+              <td>
+                <input type="text" name='name' placeholder='Nom Commercial' class="form-control" formControlName= "title" required/>
+              </td>
+              <td>
+                <input type="text" name='ident' placeholder='Identification' class="form-control" formControlName= "userId"/>
+              </td>
+              <td>
+                <input name="desc0" placeholder="Id carton" class="form-control" formControlName= "idCartonClient" required/>
+              </td>
+              <td>
+                <select formControlName = "demandType" >
+                  <option value="retrait" >Retrait</option>
+                  <option value="ajout">Ajout</option>
+                  <option value="destruction">Destruction</option>
+                </select>
+              </td>
+              <td>
+                <button  class='btn btn-danger glyphicon glyphicon-remove' (click) = "deleteFieldValue()" ></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </form>
+    </div>
+  </div>
+  <button [disabled] = "!demandForm.valid" class="btn btn-primary pull-right" style="margin-left: 2%" (click) = "onSubmit(demandForm.value)" >Passer la demande</button>
+  <a id="add_row" class="btn btn-default pull-right" (click)= "addFieldValue()" >Ajouter une ligne</a>
+
+</div> 

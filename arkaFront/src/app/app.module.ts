@@ -9,22 +9,32 @@ import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { DemandeComponent } from './demande/demande.component';
 import { DataTablesModule } from 'angular-datatables';
-import { HttpClientModule} from '@angular/common/http'; 
+import { HttpClientModule} from '@angular/common/http';
+import { Http, HttpModule, RequestOptions } from '@angular/http';
+import { AjoutDemandeComponent } from './demande/ajout-demande/ajout-demande.component';
+import { FormsModule } from '@angular/forms';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { ContactComponent } from './contact/contact.component';
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     LoginComponent,
     HomeComponent,
-    DemandeComponent
+    DemandeComponent,
+    AjoutDemandeComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     Routing,
     AppRoutingModule,
     DataTablesModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

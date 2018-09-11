@@ -7,10 +7,12 @@ import { Routing } from '../app.routing';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-
+  sIndex : number ;
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
-
+  setIndex(i){
+    this.sIndex = i;
+  }
 }

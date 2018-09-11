@@ -1,28 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">CAP TB</a>
+    <a class="navbar-brand" style="color:white">CAP TB</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home
+        <li class="nav-item " [ngClass]="{'active': selectedItem === 'item1'}" (click)="selectedItem = 'item1'">
+          <a [routerLink]= "''"  class="nav-link">Home
             <span class="sr-only">(current)</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+        <li class="nav-item" [ngClass]="{'active': selectedItem === 'item2'}" (click)="selectedItem = 'item2'">
+          <a class="nav-link" >About</a>
         </li>
-        <li class="nav-item">
-          <a [routerLink]= "'demande'" class="nav-link" href="#">Demandes</a>
+        <li class="nav-item" [ngClass]="{'active': selectedItem === 'item3'}" (click)="selectedItem = 'item3'">
+          <a [routerLink]= "'demande'" class="nav-link" >Demandes</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+        <li class="nav-item" >
+          <a class="nav-link" >Contact</a>
         </li>
         <li class="nav-item" style="position: absolute;float: right;right: 100px;">
-          <a  [routerLink]= "'login'" class="nav-link" >Login</a>
+          <a [routerLink]= "'login'" class="nav-link" >Login</a>
         </li>
         <li class="nav-item" style="position: absolute;float: right;right: 35px;">
           <a class="nav-link" >Logout</a>
