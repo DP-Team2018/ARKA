@@ -23,6 +23,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import arka.domain.Admin;
+import arka.domain.Agent;
 import arka.service.AdminServiceLocal;
 
 @Stateless
@@ -60,30 +61,54 @@ public Response getCamp(@PathParam("id")int id){
 }
 
 @POST
-public Response addCamp(Admin a){
-	adminService.addAdmin(a);
-	return Response.ok().build();
-}
+@Path("/addAdmin/{matricule}/{nom}/{password}/{email}/{adress}/{numTel}")
+@Consumes({ MediaType.APPLICATION_JSON })
+public Response addCamp(@PathParam("matricule") String matricule,@PathParam("nom") String nom,@PathParam("password") String password,@PathParam("email") String email,@PathParam("adress") String adress,@PathParam("numTel")String numTel){
+	
+	 Admin a =new Admin();
+	    a.setMatricule(matricule);
+		a.setNom(nom);
+		a.setPassword(password);
+		a.setEmail(email);
+		a.setAdress(adress);
+		a.setNumTel(numTel);
+		if(a!=null)
+		{
+	   adminService.addAdmin(a);
+	   return Response.status(Status.OK).entity("ok").build();
+		}
+			
+		return Response.status(Status.NO_CONTENT).build();
+		}
+/*
+ * @PUT
+	@Path("/update/{matricule}/{nom}/{email}/{adress}/{numTel}")
+    @Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updateAgt(@PathParam("matricule") String matricule,@PathParam("nom") String nom,@PathParam("email") String email,@PathParam("adress") String adress,@PathParam("numTel")String numTel){
+		agentservice.updateAgent(matricule, nom, email, adress, numTel);
+	  	return Response.ok().build();
+	}
+ */
 @PUT
+@Path("/updateadmmin/{id}/{matricule}/{nom}/{email}/{prenom}/{numTel}")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public Response updateAdm(Admin a){
-	
-   adminService.updateAdmin(a);
+public Response updateAdm(@PathParam("id")int id,@PathParam("matricule") String matricule,@PathParam("nom") String nom,@PathParam("email") String email,@PathParam("prenom") String prenom,@PathParam("numTel")String numTel){
+   adminService.updateAdmin(id,matricule, nom, email,prenom, numTel);
   	return Response.ok().build();
 }
 
 @DELETE
 @Produces({MediaType.APPLICATION_JSON})
-@Path("{id}")
+@Path("/{id}")
 public Response deleteAdm(@PathParam("id") int id){
 	  adminService.deleteAdmin(id);
-	//return Response.ok().build();
-	return Response.status(Status.NO_CONTENT).build();
+	  return Response.status(Status.OK).entity("ok").build();
 }
 
 
 
- 
+
  
 }

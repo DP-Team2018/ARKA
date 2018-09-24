@@ -1,7 +1,7 @@
 package arka.domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import javax.persistence.*;
 
@@ -30,7 +30,7 @@ public class Carton implements Serializable {
 	Client client; 
     Date destructionDate;
 
-    @OneToMany (mappedBy="Carton",cascade=CascadeType.PERSIST, fetch= FetchType.EAGER)
+    @OneToMany (mappedBy="carton",cascade=CascadeType.ALL, fetch= FetchType.EAGER)
     @JsonIgnore
    	private List<Demand> demands ;
     

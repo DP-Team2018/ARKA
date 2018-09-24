@@ -4,6 +4,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -32,20 +33,25 @@ AuthServiceLocal authservice;
 		super();
 	}
 
-	@POST
+	@GET
+	@Path("getid/{e}/{p}")
+	@Produces({MediaType.APPLICATION_JSON })
+	@Consumes({MediaType.APPLICATION_JSON })
+	
+	public Response getid(@PathParam("e") String e,@PathParam("p") String p){
+       int id=authservice.getiduser(e, p);
+	    return Response.status(Status.OK).entity(id).build();
+			
+	}
+	
+	@GET
 	@Path("{e}/{p}")
 	@Produces({MediaType.APPLICATION_JSON })
 	@Consumes({MediaType.APPLICATION_JSON })
 	
 	public Response log(@PathParam("e") String e,@PathParam("p") String p){
-	
-		String R=authservice.verif(e, p);
-	
-			return Response.status(Status.OK).entity(R ).build();
-		
-	
-		
+        String R=authservice.verif(e, p);
+	    return Response.status(Status.OK).entity(R).build();
+			
 	}
-	
-	
 }

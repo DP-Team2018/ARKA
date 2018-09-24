@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import arka.domain.Admin;
+import arka.domain.Agent;
 
 /**
  * Session Bean implementation class AdminService
@@ -41,14 +42,29 @@ public class AdminService implements AdminServiceRemote, AdminServiceLocal {
  	      }
     
     public void addAdmin(Admin a){
- 	 em.persist(a);
+ 	 em.merge(a);
  	  em.flush();
  	  
   
  	      }
 
 	@Override
-	public void updateAdmin(Admin a) {
+	public void updateAdmin(int id,String matricule,String nom,String email,String prenom,String numTel) {
+		Admin a = em.find(Admin.class, id);
+		a.setMatricule(matricule);
+		a.setNom(nom);
+		a.setEmail(email);
+		a.setAdress(prenom);
+		a.setNumTel(numTel);
+		em.merge(a); 
+		
+	}
+	public void updateAgent(String matricule,String nom,String email,String prenom,String numTel) {
+		Agent a = em.find(Agent.class, matricule);
+		a.setNom(nom);
+		a.setEmail(email);
+		a.setPrenom(prenom);
+		a.setNumTel(numTel);
 		em.merge(a);
 		
 	}

@@ -11,4 +11,6 @@ public interface AuthServiceRemote {
 public Agent  verifAgent(String e,String a);
 public Admin verifAdmin(String e,String a);
 public String verif (String e , String a);
+
+public int getiduser(String email,String password);
 }

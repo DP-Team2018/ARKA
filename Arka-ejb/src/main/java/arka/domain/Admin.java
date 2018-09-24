@@ -20,12 +20,15 @@ public class Admin  implements Serializable {
 	 
 	      @Id
 	      @GeneratedValue(strategy = GenerationType.AUTO)
-	      int idAdmin;
 	
-		String nom;
+	      int idAdmin;
+	      
+	      
+	    String matricule;
+	    String nom;
 		String password ;
 		String email;
-		String adress;
+		String prenon;
 	    String numTel;
 
 	     
@@ -35,13 +38,14 @@ public class Admin  implements Serializable {
 
 	
 
-	public Admin(int idUser, String nom, String password, String email, String adress, String numTel) {
+	public Admin(String matricule, String nom, String password, String email, String adress, String numTel) {
 		super();
-		this.idAdmin = idUser;
+		
+		this.matricule = matricule;
 		this.nom = nom;
 		this.password = password;
 		this.email = email;
-		this.adress = adress;
+		this.prenon = adress;
 		this.numTel = numTel;
 	}
 
@@ -53,6 +57,16 @@ public class Admin  implements Serializable {
 		return idAdmin;
 	}
 
+	
+	public String getMatricule() {
+		return matricule;
+	}
+
+
+
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
+	}
 
 
 	public void setIdAdmin(int idAdmin) {
@@ -91,13 +105,13 @@ public class Admin  implements Serializable {
 	}
 
 
-	public String getAdress() {
-		return adress;
+	public String getPrenon() {
+		return prenon;
 	}
 
 
 	public void setAdress(String adress) {
-		this.adress = adress;
+		this.prenon = adress;
 	}
 
 

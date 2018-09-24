@@ -7,8 +7,8 @@ import arka.domain.Agent;
 @Local
 public interface AgentServiceLocal {
 	public List<Agent> getAllAgent();
-	public void deleteAgent(String matricule);
-	public void updateAgent(Agent agent);
-	public Agent getAgentbyMat(String matricule);
+	public void deleteAgent(int idAgent);
+	public void updateAgent(int id,String matricule,String nom,String email,String prenom,String numTel) ;
+	public Agent getAgentbyMat(int idAgent);
 	public void addagent(Agent a);
 }

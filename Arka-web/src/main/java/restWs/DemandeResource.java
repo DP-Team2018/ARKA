@@ -69,6 +69,18 @@ public class DemandeResource {
     }
     
     @GET
+    @Path("state/{state}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response displayByState(@PathParam("state") DemandState demandState){
+        List<Demand> demandes = ds.getDemandsByState(demandState);
+        if(demandes!=null)
+        {
+            return Response.status(Status.OK).entity(demandes).build();
+        }
+        return Response.status(Status.NO_CONTENT).build();
+    }
+    
+    @GET
     @Path("date/{Date}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response displayByDate(@PathParam("Date") String date) throws ParseException{
@@ -110,6 +122,30 @@ public class DemandeResource {
     public Response displayByClientID(@PathParam("id") int id) throws ParseException{
     	  List<Demand> demande = ds.getDemandsByCLient(id);
           if(demande!=null)
+          {
+              return Response.status(Status.OK).entity(demande).build();
+          }
+          return Response.status(Status.NO_CONTENT).build();
+    }
+    
+    @GET
+    @Path("/DemandsAgent/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response displayByAgentID(@PathParam("id") String id) throws ParseException{
+    	demandes  = ds.getDemandsAgnet(id);
+          if(demandes!=null)
+          {
+              return Response.status(Status.OK).entity(demandes).build();
+          }
+          return Response.status(Status.NO_CONTENT).build();
+    }
+    
+    @GET
+    @Path("/filterN/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response displayByClientName(@PathParam("name") String name) throws ParseException{
+    	demandes  = ds.getDemandsByCLient(name);
+          if(demandes!=null)
           {
               return Response.status(Status.OK).entity(demandes).build();
           }

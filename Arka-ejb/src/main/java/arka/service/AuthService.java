@@ -19,7 +19,8 @@ import arka.domain.Admin;
 @LocalBean
 public class AuthService implements AuthServiceRemote, AuthServiceLocal {
 
-    /**
+   
+	/**
      * Default constructor. 
      */
 	@PersistenceContext
@@ -39,23 +40,43 @@ public class AuthService implements AuthServiceRemote, AuthServiceLocal {
     }
     @Override
     public String verif (String e , String a){
-    	//Agent ag= em.createQuery("Select a FROM Agent a  WHERE a.email=?3 and a.password=?6",Agent.class).setParameter(3,e ).setParameter(6,a).getSingleResult();	
-       //Admin ad= verifAdmin(e, a);
+    	
     	String R="";
    
     	List<Agent> list = em.createQuery("Select a FROM Agent a  WHERE a.email=?3 and a.password=?6",Agent.class).setParameter(3,e ).setParameter(6,a).getResultList();
         if (list.isEmpty()) {
         	Admin ad= em.createQuery("Select a from Admin a WHERE a.email=?3 and a.password=?6" ,Admin.class).setParameter(3,e ).setParameter(6,a).getSingleResult();
-    		if(ad!=null){R="true admin";
-        			
-        		}
+    		if(ad!=null){R="admin";}
         }
-        
-    		
+
     	else {
-    		R="true agent";}
+    		R="agent";}
     	
     	
     	return R;
     }
+    
+    @Override
+   public int getiduser(String email,String password){
+    	//int id=0;
+    	try{
+    	Admin a= em.createQuery("Select a FROM Admin a  WHERE a.email=?3 and a.password=?6",Admin.class).setParameter(3,email ).setParameter(6,password).getSingleResult();
+    	
+    	return a.getIdAdmin();}
+    	catch(NoResultException e){
+    		
+    	}
+    	try{
+    		Agent ag= em.createQuery("Select a FROM Agent a  WHERE a.email=?3 and a.password=?6",Agent.class).setParameter(3,email ).setParameter(6,password).getSingleResult();
+    		return ag.getIdAgent();
+    	
+    	
+    				
+   }
+    	catch(NoResultException e){
+    		
+    	}
+		return 0;
+    	}
 }
+   
