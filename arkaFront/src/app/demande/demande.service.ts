@@ -10,11 +10,15 @@ import 'rxjs/add/operator/map';
 import { myData } from './demande.component';
 @Injectable()
 export class DemandeService {
-  demandes: myData[];
+  demandes: any;
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any[]> {
-    return this.http.get<any[]>('https://my-json-server.typicode.com/typicode/demo/posts');
+    return this.demandes = this.http.get<any[]>('http://127.0.0.1/demandes.php');
     }
+
+  getDemand(): Observable<any[]> {
+    return this.demandes = this.http.get<any[]>('http://127.0.0.1/demande.php');
+  }
 
 }

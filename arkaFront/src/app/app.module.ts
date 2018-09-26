@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { ContactComponent } from './contact/contact.component';
+import { DemandDetailsComponent } from './demande/demand-details/demand-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { ContactComponent } from './contact/contact.component';
     HomeComponent,
     DemandeComponent,
     AjoutDemandeComponent,
-    ContactComponent
+    ContactComponent,
+    DemandDetailsComponent
   ],
   imports: [
     BrowserModule,

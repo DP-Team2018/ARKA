@@ -1,3 +1,95 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!------ Include the above in your HEAD tag ---------->
+
+<!-- <br /><br />
+<div class="tabs">
+  <div class="tab-button-outer">
+    <ul id="tab-button">
+      <li><a href="#tab01">Ajouter une demande</a></li>
+      <li><a href="#tab02">Joindre un ficher CSV ou XLS ou XLSX </a></li>
+    </ul>
+  </div>
+  <div class="tab-select-outer">
+    <select id="tab-select">
+      <option value="#tab01">Tab 1</option>
+      <option value="#tab02">Tab 2</option>
+    </select>
+  </div>
+
+  <div id="tab01" class="tab-contents">
+    <h2>Tab 1</h2>
+    <div class="col-md-5 wrapper">
+      <h4> Joindre un ficher CSV ou XLS</h4>
+      <input class="btn ajout" type="file" name="File Upload" id="txtFileUpload" (change)="changeListener($event.target.files)"
+        accept=".xlsx,.xls,.csv" />
+    </div>
+  </div>
+  <div id="tab02" class="tab-contents">
+    <div class="row clearfix">
+      <div class="col-md-12 table-responsive">
+        <form [formGroup]="demandForm">
+          <div class="col-md-5 wrapper">
+            <h4> Joindre un ficher CSV ou XLS</h4>
+            <input class="btn ajout" type="file" name="File Upload" id="txtFileUpload" (change)="changeListener($event.target.files)"
+              accept=".xlsx,.xls,.csv" />
+          </div>
+          <button class="btn" *ngIf="clickOnDemand()">Ajouter une seule demande</button>
+          <table class="table table-bordered table-hover table-sortable" id="tab_logic">
+            <thead>
+              <tr>
+                <th class="text-center">
+                  Nom de la demande
+                </th>
+                <th class="text-center">
+                  Commentaire
+                </th>
+                <th class="text-center">
+                  Id carton
+                </th>
+                <th class="text-center">
+                  Type de demande
+                </th>
+                <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+  
+              <tr *ngFor="let field of fieldArray; let i = index">
+                <td>
+                  <input type="text" name='name' placeholder='Nom Commercial' class="form-control" formControlName="nom"
+                    required />
+                </td>
+                <td>
+                  <input type="text" name='ident' placeholder='Identification' class="form-control" formControlName="commentaire" />
+                </td>
+                <td>
+                  <input name="desc0" placeholder="Id carton" class="form-control" formControlName="idCartonClient"
+                    required />
+                </td>
+                <td>
+                  <select formControlName="demandType">
+                    <option value="retrait">Retrait</option>
+                    <option value="ajout">Ajout</option>
+                    <option value="destruction">Destruction</option>
+                  </select>
+                </td>
+                <td>
+                  <button class='btn btn-danger glyphicon glyphicon-remove' (click)="deleteFieldValue()"></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </div>
+    <button [disabled]="!demandForm.valid" class="btn btn-primary pull-right" style="margin-left: 2%" (click)="onSubmit(demandForm.value)">Passer
+      la demande</button>
+    <a id="add_row" class="btn btn-default pull-right" (click)="addFieldValue()">Ajouter une ligne</a>
+  
+  </div>
+  
+</div> -->
 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
@@ -5,15 +97,20 @@
   <div class="row clearfix">
     <div class="col-md-12 table-responsive">
       <form [formGroup]="demandForm" >
-        <table class="table table-bordered table-hover table-sortable" id="tab_logic">
+       
+        <!-- <div class="col-md-6">
+          <button class="btn btn-primary" (click)="open = true" >Ajouter une seule demande</button>
+        </div> -->
+        <div>
+        <table class="table table-bordered table-hover table-sortable" id="tab_logic" >
           <thead>
             <tr>
               <th class="text-center">
-                Nom Commercial
+                Nom de la demande
             
               </th>
               <th class="text-center">
-                note
+                Commentaire
               </th>
               <th class="text-center">
                 Id carton
@@ -29,10 +126,10 @@
             
             <tr *ngFor = "let field of fieldArray; let i = index" >
               <td>
-                <input type="text" name='name' placeholder='Nom Commercial' class="form-control" formControlName= "title" required/>
+                <input type="text" name='name' placeholder='Nom Commercial' class="form-control" formControlName= "nom" required/>
               </td>
               <td>
-                <input type="text" name='ident' placeholder='Identification' class="form-control" formControlName= "userId"/>
+                <input type="text" name='ident' placeholder='Identification' class="form-control" formControlName= "commentaire"/>
               </td>
               <td>
                 <input name="desc0" placeholder="Id carton" class="form-control" formControlName= "idCartonClient" required/>
@@ -50,10 +147,20 @@
             </tr>
           </tbody>
         </table>
+        </div>
         </form>
     </div>
   </div>
-  <button [disabled] = "!demandForm.valid" class="btn btn-primary pull-right" style="margin-left: 2%" (click) = "onSubmit(demandForm.value)" >Passer la demande</button>
-  <a id="add_row" class="btn btn-default pull-right" (click)= "addFieldValue()" >Ajouter une ligne</a>
-
+  <button   [disabled] = "!demandForm.valid" class="btn btn-primary pull-right" style="margin-left: 2%" (click) = "onSubmit(demandForm.value)" >Passer la demande</button>
+  <a  id="add_row" class="btn btn-default pull-right" (click)= "addFieldValue()" >Ajouter une ligne</a>
+  
+<div class="col-md-6 row" >
+  <button class="btn btn-primary join" (click)="open = true">Joindre un ficher</button>
+  <div class="col-md-6 row file-add" *ngIf="open">
+    <input class="btn ajout" type="file" name="File Upload" id="txtFileUpload" (change)="changeListener($event.target.files)"
+      accept=".xlsx,.xls,.csv" />
+  </div>
+ 
+</div>
 </div> 
+ 

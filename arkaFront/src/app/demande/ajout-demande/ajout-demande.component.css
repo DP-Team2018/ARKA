@@ -2,3 +2,15 @@
     cursor: move;
    
 }
+button.ajout{
+    position: relative;
+    margin-bottom:2%; 
+}
+
+.join{
+    position: absolute;
+
+}
+.file-add{
+    margin-top: 15% ;
+}

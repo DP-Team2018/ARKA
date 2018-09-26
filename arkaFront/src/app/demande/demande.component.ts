@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, Input } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, Input, Renderer, Output } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Subject } from 'rxjs';
 import { DemandeService } from './demande.service';
@@ -19,26 +19,32 @@ export interface myData {
 })
 export class DemandeComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject = new Subject<any>();
+  dtTrigger = new Subject<any>();
  // demandes: myData;
  // data: myData;
-  demandes: myData[] = []  ;
+  demandes: any[] = []  ;
   error = '';
-
-  constructor(private myService: DemandeService) { }
+  constructor(private renderer: Renderer,  private myService: DemandeService, private router:Router) { }
 
   ngOnInit() {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 10
-    };
     this.myService.getData()
       .subscribe(data  => { this.demandes = data;
         this.dtTrigger.next();
       });
-
   }
-
+  // ngAfterViewInit(): void {
+  //   this.renderer.listenGlobal('document', 'click', (event) => {
+  //     if (event.target.hasAttribute("view-demand-id")) {
+  //       this.router.navigate(["/demand/" + event.target.getAttribute("view-demand-id")]);
+  //     }
+  //   });
+  showDetails(demand){
+    // this.selectedDemand = demand ;
+    // this.id = demand.idDemand ; 
+    console.log(demand.idDemand);
+    this.router.navigate(['demandeDetails', demand.idDemand]) ;
+    // this.selectedIndex = i ;
+  }
 
 
 }

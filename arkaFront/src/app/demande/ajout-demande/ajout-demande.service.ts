@@ -15,7 +15,7 @@ export class AjoutDemandeService {
   // }
   addDemande(demande: any): Observable<any> {
     // tslint:disable-next-line:max-line-length
-    const url = 'https://my-json-server.typicode.com/typicode/demo/posts';
+    const url = 'http://127.0.0.1/demandes.php';
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'Cache-Control': 'no-cache',

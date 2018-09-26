@@ -1,0 +1,22 @@
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+    <tr>
+      <th>ID Demande</th>
+      <th>Note</th>
+      <th>Type de demande</th>
+      <th>Id Carton Client</th>
+      <th>Date</th>
+      <th>Etat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let demande of demandes ">
+      <td>{{demande.idDemand}}</td>
+      <td>{{demande.commentaire}}</td>
+      <td>{{demande.demandType}}</td>
+      <td>{{demande.idCartonClient}}</td>
+      <td>{{demande.date}}</td>
+      <td>{{demande.etat}}</td>
+    </tr>
+  </tbody>
+</table>
