@@ -16,13 +16,19 @@ public class Agent  implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
-	@Id
-	 String matricule;
+	 @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
+     int idAgent;
+	 
 	
+
+
+
+	String matricule;
 	String nom;
 	String password ;
 	String email;
-	String adress;
+	String prenom;
     String numTel;
     
     
@@ -31,17 +37,25 @@ public class Agent  implements Serializable {
 	public Agent() {
 		super();
 	}
+	public int getIdAgent() {
+		return idAgent;
+	}
+
+
+
+	public void setIdAgent(int idAgent) {
+		this.idAgent = idAgent;
+	}
 	
 	
-	
-	public Agent(String matricule, String nom, String password, String email, String adress, String numTel,
+	public Agent(String matricule, String nom, String password, String email, String prenom, String numTel,
 			Date recretingDate, float salaire) {
 		super();
 		this.matricule = matricule;
 		this.nom = nom;
 		this.password = password;
 		this.email = email;
-		this.adress = adress;
+		this.prenom = prenom;
 		this.numTel = numTel;
 		
 	}
@@ -80,11 +94,11 @@ public class Agent  implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAdress() {
-		return adress;
+	public String getPrenom() {
+		return prenom;
 	}
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setPrenom(String adress) {
+		this.prenom = adress;
 	}
 	public String getNumTel() {
 		return numTel;
@@ -109,3 +123,5 @@ public class Agent  implements Serializable {
    
 	
 }
+
+

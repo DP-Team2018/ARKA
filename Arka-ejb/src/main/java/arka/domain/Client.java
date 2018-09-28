@@ -21,9 +21,16 @@ public class Client implements Serializable {
 	 @GeneratedValue(strategy = GenerationType.AUTO)
 
 	int idClient;
-	
+	String codeClient;
     String nom;
-	
+	public String getCodeClient() {
+		return codeClient;
+	}
+
+	public void setCodeClient(String codeClient) {
+		this.codeClient = codeClient;
+	}
+
 	String password ;
 	String email;
 	String adress;

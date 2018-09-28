@@ -6,6 +6,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.ws.rs.PathParam;
 
 import arka.domain.Admin;
 import arka.domain.Agent;
@@ -33,27 +34,34 @@ public class AgentService implements AgentServiceRemote, AgentServiceLocal {
 	}
 
 	@Override
-	public void deleteAgent(String matricule) {
-		Agent a = em.find(Agent.class, matricule);
+	public void deleteAgent(int idAgent) {
+		Agent a = em.find(Agent.class, idAgent);
 		  em.remove(a);
 	    
 	}
 
 	@Override
-	public void updateAgent(Agent agent) {
-		em.merge(agent);
+	public void updateAgent(int id,String matricule,String nom,String email,String prenom,String numTel) {
+		Agent a = em.find(Agent.class, id);
+		a.setMatricule(matricule);
+		a.setNom(nom);
+		a.setEmail(email);
+		a.setPrenom(prenom);
+		a.setNumTel(numTel);
+		em.merge(a);
 		
 	}
 
 	@Override
-	public Agent getAgentbyMat(String matricule) {
-		  Agent agent=  em.find(Agent.class, matricule);
+	public Agent getAgentbyMat(int idAgent) {
+		  Agent agent=  em.find(Agent.class, idAgent);
 	 	   return agent;
 	}
 
 	@Override
 	public void addagent(Agent a) {
-		em.persist(a);
+		em.merge(a);
+	
 		
 	}
 

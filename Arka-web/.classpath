@@ -23,5 +23,10 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="lib" path="C:/Users/Asusu/Downloads/jfoenix-8.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Asusu/Downloads/mail.jar"/>
+>>>>>>> branch 'master' of https://github.com/DP-Team2018/ARKA.git
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
