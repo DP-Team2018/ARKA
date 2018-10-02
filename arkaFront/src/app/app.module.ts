@@ -13,6 +13,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { Http, HttpModule, RequestOptions } from '@angular/http';
 import { AjoutDemandeComponent } from './demande/ajout-demande/ajout-demande.component';
 import { FormsModule } from '@angular/forms';
+import { PapaParseModule } from 'ngx-papaparse';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { ContactComponent } from './contact/contact.component';
@@ -36,7 +37,8 @@ import { DemandDetailsComponent } from './demande/demand-details/demand-details.
     HttpClientModule,
     HttpModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PapaParseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
